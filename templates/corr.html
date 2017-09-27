@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% set active_page = "corr" %}
+{% block content %}
+<div class="container">
+  <div class="subheading">Correlations </div>
+  <p>This table shows correlations between materials attributes. Click on any attribute to see a Ashby plot of the two variables.</p>  
+  <div style="text-align: center; height:100%; min-height: 600px;">
+    <div style="display: inline-block; height: 90%; ">
+      {{ script|safe }}
+      {{ div|safe }}
+    </div>
+  </div>
+</div>
+{% endblock %}

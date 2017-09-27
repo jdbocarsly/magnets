@@ -1,0 +1,50 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UCSB Magnet database</title>
+
+<link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:Regular,Semi-bold,RegularItalic|Roboto+Slab:Regular|Lato:Regular,bold">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ url_for('static',filename='engr_styles.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ url_for('static',filename='navbar.css') }}" type="text/css">
+<link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.6.min.css"
+    rel="stylesheet" type="text/css">
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.6.min.js"></script>
+{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{%block header_addons %}
+{% endblock %}
+</head>
+<body>
+
+{% set navigation_bar = [
+    ('/', 'index', 'Ashby plot'),
+    ('/correlations', 'corr', 'Correlations'),
+    ('/about','about','About')
+] -%}
+{#{% set active_page = active_page|default('index') -%}#}
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><b>UCSB Magnet database</b></a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      {% for href, id, caption in navigation_bar %}
+        <li{% if id == active_page %} class="active"{% endif%}>
+        <a href="{{ href|e }}">{{ caption|e }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

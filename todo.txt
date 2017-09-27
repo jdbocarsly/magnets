@@ -1,0 +1,31 @@
+to do:
+- format consistent navbar
+- about page: details of calculations and names
+- add structural and DOS covariants
+- pull DOS from braid for predictions
+- individual atom explorer app
+- think about BVS?
+- maybe deliver corr (and dosplots) as static?
+- data table page (pandas? filterable?)
+- alternate (shorter titles?), units/no units -- probably easiest as DF columns
+- refactor styles into one master style, and other styles as necessary
+- correlations on the main plot?
+
+dosplot:
+- cifs
+- citations     
+- aesthetics
+- navbar
+- reformat table to put units on left
+- put words in a sensible order
+
+corrplot:
+- change/shorten names
+- corrplot comes down below?
+
+Ashby:
+- switch button (switch x and y axes)
+- suggested axis choices for main page
+- colors for discrete categories on the main page
+overall: 
+-filter by elements? (

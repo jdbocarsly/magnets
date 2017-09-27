@@ -1,0 +1,72 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-bottom: 40px;
+  color: #5a5a5a;
+  font-family: 'Open Sans', 'helvetica', sans-serif;
+  font-size : medium;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+.mainplot {
+   max-width: 800px;
+   width: 100%;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.main_heading {
+	font-family:'Roboto Slab', 'Avenir', 'sans-serif';
+	font-size: 3em;
+	font-weight: 500;
+	color:#fff;
+}
+/* hack so that the main heading looks better on a phone */
+@media (max-width : 400px)
+    {
+    	.main_heading
+    	 {font-size:2.2em;}
+    }
+
+.first-description{
+	color:#f9f9f9;
+	font-size: 1.2em;
+	font-weight: 400;
+}
+
+.breakpoint {
+	display: inline-block;
+}
+
+.subheading {
+	color : #006699;
+	font-size: 1.3em;
+	font-weight: 600;
+	font-family:'Roboto Slab','Avenir','sans-serif';
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family : sans-serif;
+	color : #006699;
+} 
+
+
+
+ol.publist li{
+  	margin: 10px 0;
+}
+
+:link {color :#D99800; text-decoration : none; background-color : inherit;}
+:visited {color :#b37d00 ; text-decoration : none; background-color : inherit;}
+
