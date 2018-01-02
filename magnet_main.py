@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from bokeh.layouts import row, widgetbox
 from bokeh.models import HoverTool, OpenURL, TapTool, CustomJS, LinearColorMapper,ColorBar
-from bokeh.palettes import Viridis256, Magma256, Plasma256
+from bokeh.palettes import Viridis256, Magma256, Plasma256, brewer
 from bokeh.plotting import curdoc, figure, ColumnDataSource
 from bokeh.embed import components
 from bokeh.io import curdoc
@@ -57,7 +57,19 @@ style = {'attrs': {
 app = Flask(__name__)
 
 df = pd.read_pickle("clean_pickle.df")
+#df = pd.read_csv("magnet_database.csv")
+df["formula_nosubs"] = df["formula"]
 df["formula"] = [make_subscripts(name) for name in df["formula"]]
+df["class"] = df["class"].fillna("classless")
+
+df_rounded = df.round(
+    {"Curie temperature (K)":0,
+    "gravimetric moment (emu/g)":1,
+    "largest local moment (µB)":2,
+    })
+
+
+print(df["class"])
 source = ColumnDataSource(df)
 cols = sorted(df.columns)
 
@@ -69,34 +81,38 @@ dos_cols = [
 "Curie temperature (K)",
 "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
 "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
-"source (experimental)",
 "magnetic deformation (Σm), %",
-"maximum atomic moment (µB)",
+"largest local moment (µB)",
 "gravimetric moment (emu/g)",
 "volumetric moment (emu/cm³)",
 "moment per atom (µB/atom)",
 "energy of spin-polarization (eV/atom)",
 "theoretical density (g/cm³)",
+"source (experimental)",
 ]
 axis_columns = [
-"Curie temperature (K)",
+"class",
+"element carrying largest moment",
 "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
 "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
+"Curie temperature (K)",
 "gravimetric moment (emu/g)",
 "volumetric moment (emu/cm³)",
-"energy of spin-polarization (eV/atom)",
-"magnetic deformation (Σm), %",
-"magnetic volume change (%)",
-"maximum atomic moment (µB)",
-"theoretical density (g/cm³)",
 "moment per atom (µB/atom)",
+"largest local moment (µB)",
+"theoretical density (g/cm³)",
+"energy of spin-polarization (eV/atom)",
+"magnetic volume change (%)",
+"magnetic deformation (Σm), %",
 "Σm x gravimetric moment",
+
 ]
 
-discrete_columns = [
-'element carrying largest moment',
-'class'
-]
+discrete_columns = {
+'element carrying largest moment':["Cr","Mn","Fe","Co","Ni"],
+'class':["heusler","perovskite","antiperovskite","Co2P","MnAs"],
+}
+
 
 def main_plot(x_axis, y_axis,color):
    print(type(x_axis), type(y_axis))
@@ -105,19 +121,19 @@ def main_plot(x_axis, y_axis,color):
 
    kw=dict()
 
+   if x_axis in discrete_columns.keys():
+      kw['x_range'] = discrete_columns[x_axis]
+   if y_axis in discrete_columns:
+      kw['y_range'] = discrete_columns[y_axis]
+
    p = figure(plot_height=600, plot_width=800, responsive=True, tools=TOOLS,
-      title="{} vs. {}".format(y_axis,x_axis))
+      title="{} vs. {}".format(y_axis,x_axis), **kw)
    curdoc().theme = Theme(json=style)
-   p.toolbar.active_drag = None # no boxzoom: todo: ONLY FOR MOBILE
+   #p.toolbar.active_drag = None # no boxzoom: todo: ONLY FOR MOBILE
 
    p.xaxis.axis_label = x_axis
    p.yaxis.axis_label = y_axis
 
-
-   if x_axis in discrete_columns:
-      kw['x_range'] = sorted(set(df[x_axis]))
-   if y_axis in discrete_columns:
-      kw['y_range'] = sorted(set(df[y_axis]))
 
    print(kw)
    sz = 12
@@ -125,23 +141,41 @@ def main_plot(x_axis, y_axis,color):
    #    groups = pd.qcut(df[size.value].values, len(SIZES))
    #    sz = [SIZES[xx] for xx in groups.codes]
 
-   c = "#31AADE"
-   colormapper = LinearColorMapper(palette="Plasma256",low=df[color].min(), high=df[color].max())
+   #c = "#31AADE"
    #if color != 'None':
    #   groups = pd.qcut(df[color].values, len(COLORS))
    #c = [COLORS[x] for x in groups.codes]
 
-   p.circle(x_axis, y_axis, color={'field': color, 'transform': colormapper},
-    size=sz, line_color={'field': color, 'transform': colormapper}, alpha=0.2,
-      hover_alpha=1, hover_line_color="#ff7044",source=source,
-      line_width=1.5,name="circs",line_alpha=1)
 
-   color_bar = ColorBar(color_mapper=colormapper, major_label_text_font_size=FONTSIZE,
+
+   #for categorical data, 
+   if color in discrete_columns.keys():
+      items = discrete_columns[color]
+      c = brewer['Dark2'][len(items)]
+      for i, item in enumerate(items):
+         df2 = df[df[color]==item]
+         p.circle(df2[x_axis], df2[y_axis], color=c[i],
+            size=sz, line_color=c[i], alpha=0.5, hover_alpha=1, hover_line_color="#ff7044",
+            line_width=1.5, name="circs_{}".format(i), line_alpha=1, legend=item,muted_alpha=0.05)
+      p.legend.click_policy="mute"
+   
+
+
+   else:
+      # for non catecorical, use a color transform
+      colormapper = LinearColorMapper(palette="Plasma256",low=df[color].min(), high=df[color].max())
+      color_attr = {'field':color, 'transform': colormapper}
+      p.circle(x_axis, y_axis, color=color_attr,
+         size=sz, line_color=color_attr, alpha=0.2,
+         hover_alpha=1, hover_line_color="#ff7044",source=source,
+         line_width=1.5,name="circs",line_alpha=1)
+      color_bar = ColorBar(color_mapper=colormapper, major_label_text_font_size=FONTSIZE,
                      label_standoff=12, border_line_color=None, location=(0,0))
-   p.add_layout(color_bar,"right")
+      p.add_layout(color_bar,"right")
+   
    #to avoid weird taptool behavior
-   renderer = p.select(name="circs")[0]
-   renderer.nonselection_glyph=renderer.glyph
+   #renderer = p.select(name="circs")[0]
+   #renderer.nonselection_glyph=renderer.glyph
 
    hover = p.select(type=HoverTool)
    hover.tooltips = [
@@ -174,7 +208,8 @@ def main_plot(x_axis, y_axis,color):
 
 
 @app.route('/')
-def index():
+@app.route('/ashby')
+def ashby():
    xprm = request.args.get("x_axis")
    if xprm == None:
       xprm = "Curie temperature (K)"
@@ -190,7 +225,7 @@ def index():
    plot = main_plot(xprm, yprm,cprm)
    script, div = components(plot)
 
-   return render_template("index_bootstrap.html", script=script, div=div,
+   return render_template("ashby.html", script=script, div=div,
       cols=axis_columns, curr_x=xprm, curr_y=yprm, curr_c=cprm,
       color_cols=axis_columns)
 
@@ -206,16 +241,18 @@ def single_compound_view(cid):
 
 @app.route('/correlations')
 def corr_page():
-   plot = plot_corr(df)
+   plot = plot_corr(df[axis_columns])
    script, div = components(plot)
    return render_template("corr.html",script=script, div=div)
+
 @app.route('/about')
 def about():
   return render_template("about.html")
 
-
-
-
+@app.route('/datatable')
+def table_page():
+  #table_page()
+  return render_template("datatable.html", df=df_rounded.iterrows())
 
 if __name__ == '__main__':
    app.run(debug=True)

@@ -61,7 +61,7 @@ def plot_corr(df, cmap_name="RdBu", method="pearson"):
            will be displayed in the tooltip, for now
    '''
    df = df.copy()
-   del df["cid"]
+   #del df["cid"]
    cmap  = cm.get_cmap(name=cmap_name)
    # cmap takes a value between 0 and 1. We want to make it take a value between -1 and 1
    cmapX = lambda x: rgb2hex(cmap((x+1)/2))

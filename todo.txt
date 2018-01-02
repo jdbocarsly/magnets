@@ -1,23 +1,30 @@
-to do:
-- format consistent navbar
-- about page: details of calculations and names
-- add structural and DOS covariants
-- pull DOS from braid for predictions
+general:
+- put on server
+- check data... are lowest moment AFM?
+
+X format consistent navbar
+X pull DOS from braid for predictions
 - individual atom explorer app
 - think about BVS?
-- maybe deliver corr (and dosplots) as static?
-- data table page (pandas? filterable?)
+- maybe deliver corr (and dosplots?) as static?
+X data table page (pandas? filterable?) PRELIM DONE
 - alternate (shorter titles?), units/no units -- probably easiest as DF columns
-- refactor styles into one master style, and other styles as necessary
+- refactor styles into one master style, and other styles as necessary TAKE FROM SE APP
 - correlations on the main plot?
 
+about:
+- details of calculations and names
+- instructions
+
 dosplot:
+- vertical scaling
 - cifs
 - citations     
 - aesthetics
 - navbar
 - reformat table to put units on left
 - put words in a sensible order
+- give all moments
 
 corrplot:
 - change/shorten names
@@ -26,6 +33,16 @@ corrplot:
 Ashby:
 - switch button (switch x and y axes)
 - suggested axis choices for main page
-- colors for discrete categories on the main page
+X colors for discrete categories on the main page
 overall: 
--filter by elements? (
+X filter by elements?
+
+
+Datatable:
+collapsable columns
+
+new covariants:
+number of structurally distinct magnetic sites
+number of unique magnetic elements
+
+

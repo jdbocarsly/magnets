@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% set active_page = "datatable" %}
+
+{%block header_addons %}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js">
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+{#<h3>All data</h3>#}
+<table id="datatable" class="table table-hover" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+              <th rowspan="2">formula</th>
+              <th rowspan="2">id</th>
+              <th rowspan="2">formula</th>
+              <th rowspan="2">material class</th>
+              <th rowspan="2"><i>T</i><sub>C</sub> (K) </th>
+              <th colspan="2">Δ<i>S</i><sub>M</sub> (J kg<sup>&minus;1</sup>K<sup>&minus;1</sup>)</th>
+              <th rowspan="2">moment (emu/g)</th>
+              <th colspan="2">largest local moment</th>
+            </tr>
+            <tr>
+
+                <th><i>H</i> = 2 T</th>
+                <th><i>H</i> = 5 T</th>
+
+                <th>element</th>
+                <th>µ (µ<sub>B</sub>/atom)</th>
+            </tr>
+        </thead>
+
+  <tbody>
+  {% for index, row in df %}
+      <tr>
+        <td>{{row["formula_nosubs"]}}</td>
+        <td>{{row["cid"]}}</td>
+        <td>{{row["formula"]}}</td>
+        <td>{{row["class"]}}</td>
+        <td>{{row["Curie temperature (K)"]}}</td>
+        <td>{{row["−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)"]}}</td>
+        <td>{{row["−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)"]}}</td>
+        <td>{{row["gravimetric moment (emu/g)"]}}</td>
+        <td>{{row["element carrying largest moment"]}}</td>
+        <td>{{row["largest local moment (µB)"]}}</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- to make into an interactive datatable-->
+{# first column has no subscripts and is just for searchability #}
+<script>
+$(document).ready(function() {
+    var table = $('#datatable').DataTable( {
+        "columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": true,
+            }
+        ]
+    } );
+
+    $('#datatable tbody').on('click', 'tr', function() {
+      var data = table.row(this).data();
+      //window.location.href = '/c/' + data[1]
+      url = '/c/' + data[1]
+      $('<a href="'+ url + '" target="_blank"></a>')[0].click();
+    } );
+} );
+
+</script>
+
+{% endblock %}
+
+</body>
+</html>

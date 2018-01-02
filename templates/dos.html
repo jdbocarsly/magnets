@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
+{%block header_addons %}
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js">
+</script>
+
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid">
 <div class="row">
@@ -13,7 +20,13 @@
 <div class="col-xs-6">
 
   <h3>Experimental and calculated data</h3>
-  <table class="table table-hover">
+  <table id="dos-table"  class="table table-hover">
+      <thead>
+        <tr>
+            <th>property</th>
+            <th>value</th>
+        </tr>
+    </thead>
   <tbody>
   {% for att_name, att in c_atts %}
       <tr>
@@ -25,6 +38,14 @@
   </table>
 </div>
 </div>
+
+<!-- to make into an interactive datatable-->
+{# <script>
+$(document).ready( function () {
+    $('#dos-table').DataTable();
+} );
+</script> #}
+
 {% endblock %}
 
 </body>
