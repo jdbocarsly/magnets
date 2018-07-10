@@ -35,6 +35,14 @@ body {
      }
  }
 
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+#switch {
+margin-left:3%;
+}
 
 .dosplot {
 	max-width:80vh;

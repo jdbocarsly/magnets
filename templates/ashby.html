@@ -23,6 +23,7 @@
     </select>
 
     <label for="yaxis">Y axis:</label>
+  <div class="flex-row"> 
     <select class="form-control" name="y_axis" onchange='if(this.value != 0) { this.form.submit(); }' id="yaxis">
     {% for yprm in cols %}
       {% if yprm == curr_y %}
@@ -33,11 +34,9 @@
     {% endfor %}
     </select>
 
-{#
-  <button type="button" class="btn-default" id="switch"><span class="glyphicon glyphicon-sort"></span></button>
+  <a class="btn btn-default switch-btn" id="switch" style="padding: 8px 10px;"href="/?x_axis={{ curr_y }}&y_axis={{ curr_x }}&color_axis={{ curr_c }}"><span class="glyphicon glyphicon-sort"></span></a>
   </div>
-  <h4>switch x and y </h4>
-#}
+  {# <h4>switch x and y </h4> #}
 
 
     <label for="coloraxis">color:</label>
