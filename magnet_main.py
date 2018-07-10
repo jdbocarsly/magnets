@@ -126,14 +126,14 @@ def main_plot(x_axis, y_axis,color):
    if y_axis in discrete_columns:
       kw['y_range'] = discrete_columns[y_axis]
 
-   p = figure(plot_height=600, plot_width=800, responsive=True, tools=TOOLS,
-      title="{} vs. {}".format(y_axis,x_axis), **kw)
+   p = figure(plot_height=600, plot_width=800, sizing_mode="scale_width", tools=TOOLS, 
+      **kw)
+   #title="{} vs. {}".format(y_axis,x_axis) # add to figure() call to use bokeh title
    curdoc().theme = Theme(json=style)
    #p.toolbar.active_drag = None # no boxzoom: todo: ONLY FOR MOBILE
 
    p.xaxis.axis_label = x_axis
    p.yaxis.axis_label = y_axis
-
 
    print(kw)
    sz = 12

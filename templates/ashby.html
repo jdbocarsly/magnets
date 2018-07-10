@@ -5,34 +5,33 @@
 <div class="container-fluid">
 
 <div class="row">
-<div class="col-sm-3 col-lg-offset-1">
+<div class="col-sm-5 col-md-3 col-lg-offset-1">
    <div class="subheading">Ashby Plot</div>
    Create scatterplots comparing various attributes from the magnet database. There are 167 magnets in the database, including 33 with measured magnetocaloric properties. Click on any datapoint to see more information, including calculated densities of states.
 
-<div class="form-group">
+  <div class="form-group" style="max-width:300px;">
+  <form>
+    <label for="xaxis">X axis:</label>
+    <select class="form-control" name="x_axis" onchange='if(this.value != 0) { this.form.submit(); }' id="xaxis">
+     {% for xprm in cols %}
+        {% if xprm == curr_x %}
+           <option selected value="{{ xprm }}">{{ xprm }}</option> 
+        {% else %} 
+          <option value="{{ xprm }}">{{ xprm }}</option> 
+        {% endif %}
+    {% endfor %}
+    </select>
 
-<form>
-  <label for="xaxis">X axis:</label>
-  <select class="form-control" name="x_axis" onchange='if(this.value != 0) { this.form.submit(); }' id="xaxis">
-   {% for xprm in cols %}
-      {% if xprm == curr_x %}
-         <option selected value="{{ xprm }}">{{ xprm }}</option> 
-      {% else %} 
-         <option value="{{ xprm }}">{{ xprm }}</option> 
-      {% endif %}
-   {% endfor %}
-</select>
-<div>
-  <label for="yaxis">Y axis:</label>
-  <select class="form-control" name="y_axis" onchange='if(this.value != 0) { this.form.submit(); }' id="yaxis">
-   {% for yprm in cols %}
+    <label for="yaxis">Y axis:</label>
+    <select class="form-control" name="y_axis" onchange='if(this.value != 0) { this.form.submit(); }' id="yaxis">
+    {% for yprm in cols %}
       {% if yprm == curr_y %}
          <option selected value="{{ yprm }}">{{ yprm }}</option> 
       {% else %} 
          <option value="{{ yprm }}">{{ yprm }}</option> 
       {% endif %}
-   {% endfor %}
- </select>
+    {% endfor %}
+    </select>
 
 {#
   <button type="button" class="btn-default" id="switch"><span class="glyphicon glyphicon-sort"></span></button>
@@ -41,21 +40,21 @@
 #}
 
 
-<label for="coloraxis">color:</label>
-  <select class="form-control" name="color_axis" onchange='if(this.value != 0) { this.form.submit(); }' id="coloraxis">
-   {% for c in color_cols %}
+    <label for="coloraxis">color:</label>
+    <select class="form-control" name="color_axis" onchange='if(this.value != 0) { this.form.submit(); }' id="coloraxis">
+    {% for c in color_cols %}
       {% if c == curr_c %}
          <option selected value="{{ c }}">{{ c }}</option> 
       {% else %} 
-         <option value="{{ c }}">{{ c }}</option> 
+          <option value="{{ c }}">{{ c }}</option> 
       {% endif %}
-   {% endfor %}
-</select>
+    {% endfor %}
+    </select>
 </form>
 </div>
 </div>
-</div>
-<div class="col-sm-9  col-lg-7 mainplot">
+
+<div class="col-sm-7 col-md-9 col-lg-7 mainplot">
   {{ script|safe }}
   {{ div|safe }}
 </div>

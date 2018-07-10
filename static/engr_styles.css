@@ -9,16 +9,21 @@ body {
   font-size : medium;
 }
 
-@media (min-width: 1200px) {
-  .container {
-    width: 970px;
-  }
+
+/* prevent plot going off the screen */
+.mainplot {
+	max-width:120vh;
 }
 
-.mainplot {
-   /*max-width: 800px;
-   width: 100%;*/
-}
+/* make plot a bit bigger on phones (bootstrap xs) */
+@media (max-width : 768px)
+ {
+	.mainplot
+	 {
+       max-width:140vh;
+       margin:auto;
+     }
+ }
 
 .col-centered{
     float: none;
