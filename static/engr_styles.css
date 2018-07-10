@@ -15,6 +15,16 @@ body {
 	max-width:120vh;
 }
 
+/* make plot a bit bigger on large phones (bootstrap sm) */
+@media (max-width : 992px)
+ {
+	.mainplot
+	 {
+       max-width:130vh;
+       margin:auto;
+     }
+ }
+
 /* make plot a bit bigger on phones (bootstrap xs) */
 @media (max-width : 768px)
  {
@@ -24,6 +34,12 @@ body {
        margin:auto;
      }
  }
+
+
+.dosplot {
+	max-width:90vh;
+	margin:auto;
+}
 
 .col-centered{
     float: none;
