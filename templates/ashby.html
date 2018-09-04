@@ -13,24 +13,32 @@
   <form>
     <label for="xaxis">X axis:</label>
     <select class="form-control" name="x_axis" onchange='if(this.value != 0) { this.form.submit(); }' id="xaxis">
-     {% for xprm in cols %}
-        {% if xprm == curr_x %}
-           <option selected value="{{ xprm }}">{{ xprm }}</option> 
-        {% else %} 
-          <option value="{{ xprm }}">{{ xprm }}</option> 
-        {% endif %}
+     {% for name, group in col_groups %}
+      <optgroup label="{{ name }}">
+        {% for xprm in group %}
+           {% if xprm == curr_x %}
+              <option selected value="{{ xprm }}">{{ xprm }}</option> 
+           {% else %} 
+             <option value="{{ xprm }}">{{ xprm }}</option> 
+           {% endif %}
+        {% endfor %}
+      </optgroup>
     {% endfor %}
     </select>
 
     <label for="yaxis">Y axis:</label>
   <div class="flex-row"> 
     <select class="form-control" name="y_axis" onchange='if(this.value != 0) { this.form.submit(); }' id="yaxis">
-    {% for yprm in cols %}
-      {% if yprm == curr_y %}
-         <option selected value="{{ yprm }}">{{ yprm }}</option> 
-      {% else %} 
-         <option value="{{ yprm }}">{{ yprm }}</option> 
-      {% endif %}
+     {% for name, group in col_groups %}
+      <optgroup label="{{ name }}">
+        {% for yprm in group %}
+           {% if yprm == curr_y %}
+              <option selected value="{{ yprm }}">{{ yprm }}</option> 
+           {% else %} 
+             <option value="{{ yprm }}">{{ yprm }}</option> 
+           {% endif %}
+        {% endfor %}
+      </optgroup>
     {% endfor %}
     </select>
 

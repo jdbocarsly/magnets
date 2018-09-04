@@ -29,3 +29,25 @@ df2["cid"] = df.index
 
 df2.to_pickle("clean_pickle.df")
 df2.to_csv("clean_df.csv")
+
+
+
+
+
+
+
+def get_dos_at_fermi_level(material_name):
+   nm_dos = pd.read_csv("dos_data/{}/nonsp_dost.dat".format(material_name), names=["energy","dos","idos"], sep='/s+')
+   m_dos  = pd.read_csv("dos_data/{}/sp_dost.dat".format(material_name), names=["energy","dos_u","dos_d"], sep='/s+')
+   zero_idx = np.argmin(np.abs(df.energy))
+
+   nm_dos_at_efermi = nm_dos["dos"].iloc[zero_idx]
+   m_dos_at_efermi_u = m_dos["dos_u"].iloc[zero_idx]
+   m_dos_at_efermi_d = m_dos["dos_d"].iloc[zero_idx]
+   m_dos_at_efermi   = m_dos_at_efermi_u+m_dos_at_efermi_d
+
+   reduction_in_dos  = m_dos_at_efermi/nm_dos_at_efermi
+   spin_polarization = m_dos_at_efermi_d/m_dos_at_efermi
+
+
+
