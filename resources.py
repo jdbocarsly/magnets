@@ -74,7 +74,7 @@ axis_columns_groups = [
     "largest local moment (µB)",
     "energy of spin-polarization (eV/atom)",
     "magnetic deformation (Σm), %",
-    "Σm x gravimetric moment",
+#    "Σm x gravimetric moment",
     ]),
 ("structural properties",
     [
@@ -101,8 +101,7 @@ axis_columns = [
 "theoretical density (g/cm³)",
 "magnetic volume change (%)",
 "magnetic deformation (Σm), %",
-"Σm x gravimetric moment",
-
+#"Σm x gravimetric moment",
 ]
 
 discrete_columns = {
