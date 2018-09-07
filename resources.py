@@ -55,8 +55,8 @@ dos_columns_groups = [
     [
     "Curie temperature (K)",
     "class",
-    #"−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
-    #"−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
+    "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
+    "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
     ]),
 ("calculated magnetic properties",
     [
@@ -64,7 +64,7 @@ dos_columns_groups = [
     "volumetric moment (emu/cm³)",
     "moment per atom (µB/atom)",
     "largest local moment (µB)",
-    "number of unique magnetic sites",
+    # "number of unique magnetic sites",
     #"closest magnetic ion spacing (Å)",
     #"energy of spin-polarization (eV/atom)",
     "magnetic deformation (Σm), %",
@@ -82,12 +82,6 @@ dos_columns_groups = [
     "nonmag. DOS at fermi level (states/eV/atom)",
     "nonmag. DOS at fermi level (states/eV/mag. ion)",
     "spin polarization at fermi level (%)",
-    ]),
-("magnetocaloric properties",
-    [
-    "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
-    "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
-    #"magnetic deformation (Σm), %",
     ]),
 ]
 

@@ -34,18 +34,15 @@ df2["average magnetic moment (µB)"]=df['average_magnetic_moment']
 #dos-related
 df2["spin polarization at fermi level (%)"] = df["spin_polarization_at_efermi"]*100.
 df2["nonmag. DOS at fermi level (states/eV/atom)"] = df['dos_at_efermi_nsp_per_atom']
-df2["nonmag. Dos at fermi level (states/eV/mag. ion)"] = df['dos_at_efermi_nsp_per_mag_ion']
+df2["nonmag. DOS at fermi level (states/eV/mag. ion)"] = df['dos_at_efermi_nsp_per_mag_ion']
 
 #structural properties
 df2["density (g/cm³)"]=df["density"]
 df2["spacegroup number"]=df["spacegroup_number"]
 df2["spacegroup symbol"]=df["spacegroup_symbol"]
 df2["closest magnetic ion spacing (Å)"]=df["shortest_magnetic_ion_spacing"]
-df2["number of unique magnetic sites"]=df["num_unique_magnetic_sites"]
-
-
-
-
+df2["number of unique magnetic sites"]=df["num_unique_magnetic_sites"].astype(int)
+print(df2["number of unique magnetic sites"])
 
 df2["natoms"] = df["natoms"]
 df2["cid"] = df.index

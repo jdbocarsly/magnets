@@ -61,7 +61,8 @@ def single_compound_view(cid):
 
    groups_with_vals = []
    for name, group in resources.dos_columns_groups:
-      vals = ["{:.2f}".format(c[x]) if isinstance(c[x], (np.floating, float)) else c[x] for x in group]
+      # sorry about this line. The end is to filter out delta Sm labels from showing up at NaN if the data is not available
+      vals = ["{:.2f}".format(c[x]) if isinstance(c[x], (np.floating, float)) else c[x] for x in group if not (isinstance(c[x], (np.floating, float)) and np.isnan(c[x]))]
       groups_with_vals.append( (name, list(zip(group, vals))) )
 
    [print(x) for x in groups_with_vals]
