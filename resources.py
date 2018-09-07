@@ -1,9 +1,13 @@
 # styles and data-munging for the magnet website
+import re
 
 trans = str.maketrans('0123456789.-','₀₁₂₃₄₅₆₇₈₉.₋')
 
-def make_subscripts(string):
+def make_unicode_subscripts(string):
    return string.translate(trans)
+def make_html_subscripts(string):
+   return re.sub(r'([\d\.]+)',  r"<sub>\1</sub>", string)
+
 
 FONTSIZE="14pt"
 TYPEFACE = "Lato"
@@ -45,6 +49,49 @@ style = {'attrs': {
     }
 }}
 
+
+dos_columns_groups = [
+("experimental properties",
+    [
+    "Curie temperature (K)",
+    "class",
+    "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
+    "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
+    ]),
+("calculated magnetic properties",
+    [
+    "gravimetric moment (emu/g)",
+    "volumetric moment (emu/cm³)",
+    "moment per atom (µB/atom)",
+    "largest local moment (µB)",
+    "number of unique magnetic sites",
+    "closest magnetic ion spacing (Å)",
+    "energy of spin-polarization (eV/atom)",
+    "magnetic deformation (Σm), %",
+#    "Σm x gravimetric moment",
+    ]),
+("structural properties",
+    [
+    "density (g/cm³)",
+    "spacegroup symbol",
+    "number of unique magnetic sites",
+    "closest magnetic ion spacing (Å)",
+    ]),
+("DOS-related properties",
+    [
+    "nonmag. DOS at fermi level (states/eV/atom)",
+    "nonmag. DOS at fermi level (states/eV/mag. ion)",
+    "spin polarization at fermi level (%)",
+    ]),
+("magnetocaloric properties",
+    [
+    "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
+    "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
+    "magnetic deformation (Σm), %",
+    ]),
+]
+
+
 dos_cols = [
 "Curie temperature (K)",
 "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
@@ -55,14 +102,34 @@ dos_cols = [
 "volumetric moment (emu/cm³)",
 "moment per atom (µB/atom)",
 "energy of spin-polarization (eV/atom)",
-"theoretical density (g/cm³)",
+"density (g/cm³)",
+"spacegroup symbol",
 "source (experimental)",
+]
+
+corr_cols = [
+"−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
+"−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
+"Curie temperature (K)",
+"gravimetric moment (emu/g)",
+"volumetric moment (emu/cm³)",
+"moment per atom (µB/atom)",
+"largest local moment (µB)",
+#"DOS of nonmagnetic state at fermi level (states/eV/atom)",
+#"DOS of nonmagnetic state at fermi level (states/eV/mag. ion)",
+"spin polarization at fermi level (%)",
+"density (g/cm³)",
+#"closest magnetic ion spacing (Å)",
+"spacegroup number",
+"number of unique magnetic sites",
+"magnetic deformation (Σm), %",
 ]
 
 axis_columns_groups = [
 ("experimental properties",
     [
     "Curie temperature (K)",
+    "class",
     "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
     "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
     ]),
@@ -72,13 +139,24 @@ axis_columns_groups = [
     "volumetric moment (emu/cm³)",
     "moment per atom (µB/atom)",
     "largest local moment (µB)",
+    "number of unique magnetic sites",
+    "closest magnetic ion spacing (Å)",
     "energy of spin-polarization (eV/atom)",
     "magnetic deformation (Σm), %",
 #    "Σm x gravimetric moment",
     ]),
 ("structural properties",
     [
-    "theoretical density (g/cm³)",
+    "density (g/cm³)",
+    "spacegroup number",
+    "number of unique magnetic sites",
+    "closest magnetic ion spacing (Å)",
+    ]),
+("DOS-related properties",
+    [
+    "DOS of nonmagnetic state at fermi level (states/eV/atom)",
+    "DOS of nonmagnetic state at fermi level (states/eV/mag. ion)",
+    "spin polarization at fermi level (%)",
     ]),
 ("magnetocaloric properties",
     [
@@ -87,6 +165,7 @@ axis_columns_groups = [
     "magnetic deformation (Σm), %",
     ]),
 ]
+
 
 axis_columns = [
 "class",

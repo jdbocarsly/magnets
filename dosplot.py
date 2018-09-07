@@ -17,7 +17,7 @@ from numpy import arange
 
 TOOLS = "box_zoom, pan, crosshair,undo, redo, save, reset"
 
-def create_dosplot(compound):
+def create_dosplot(compound, atoms_per_unit_cell):
    path = j("dos_data",compound)
    df1 = pd.read_csv(j(path,"nonsp_dost.dat"), names=["energy", "dos","idos"], sep="\s+")
    df1["type"] = "nonsp"
@@ -25,21 +25,15 @@ def create_dosplot(compound):
    df2["type"] = "sp"
    df2["ddos"] = -df2["ddos"]
 
-#df3 = pd.concat([df1, df2], ignore_index=True) #puts both sp and nonsp data into one dataframe
-#df3["ddos"] = df3["ddos"].apply(lambda x: -x)
+   # convert to DOS/atom
+   df1["dos"] = df1["dos"]/atoms_per_unit_cell
+   df2["udos"] = df2["udos"]/atoms_per_unit_cell
+   df2["ddos"] = df2["ddos"]/atoms_per_unit_cell
 
-#hover = HoverTool(
-#        tooltips=[
-#            ('type','@type'),
-#            ('Energy','@energy'),
-#            ('DOS','$y')
-#        ]
-#    )
-#plot = Line(df3, x="energy", y=["dos", "udos", "ddos"], xlabel="Energy (eV)", ylabel="Density of States", tools=TOOLS, active_drag="box_zoom", tooltips=tooltips)
-   p = figure(x_axis_label=r"E - Ef (eV)", y_axis_label="density of states", responsive=True,
+   p = figure(x_axis_label=r"E - Ef (eV)", y_axis_label="density of states (states/eV atom)", responsive=True,
       tools=TOOLS,active_drag="box_zoom",
       x_range=bmdr(start=-5, end=5, bounds=(-10,10)),
-      y_range=bmdr(start=-30, end=30, bounds=(-30,30))
+      y_range=bmdr(start=-4, end=4, bounds=(-10,10))
       )
    p.toolbar.logo = "grey"
    line_width=2

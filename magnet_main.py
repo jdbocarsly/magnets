@@ -18,16 +18,13 @@ from corr import plot_corr
 
 app = Flask(__name__)
 
-df = pd.read_pickle("clean_pickle.df")
+df = pd.read_pickle("clean_pickle2.df")
 df["formula_nosubs"] = df["formula"]
-df["formula"] = [resources.make_subscripts(name) for name in df["formula"]]
+df["formula_html"]=[resources.make_html_subscripts(f) for f in df["formula"]]
+df["formula"] = [resources.make_unicode_subscripts(name) for name in df["formula"]]
 df["class"] = df["class"].fillna("classless")
 
-df_rounded = df.round(
-    {"Curie temperature (K)":0,
-    "gravimetric moment (emu/g)":1,
-    "largest local moment (µB)":2,
-    })
+
 
 #print(df["class"])
 # cols = sorted(df.columns)
@@ -60,14 +57,21 @@ def single_compound_view(cid):
    if cid >= len(df): return index()
    c = df.iloc[cid]
    #c = c.dropna()
-   vals = ["{:.2f}".format(c[x]) if isinstance(c[x], (np.floating, float)) else c[x] for x in resources.dos_cols]
-   plot = create_dosplot(df.iloc[cid]["material_name"])
+   # vals = ["{:.2f}".format(c[x]) if isinstance(c[x], (np.floating, float)) else c[x] for x in resources.dos_cols]
+
+   groups_with_vals = []
+   for name, group in resources.dos_columns_groups:
+      vals = ["{:.2f}".format(c[x]) if isinstance(c[x], (np.floating, float)) else c[x] for x in group]
+      groups_with_vals.append( (name, list(zip(group, vals))) )
+
+   [print(x) for x in groups_with_vals]
+   plot = create_dosplot(df.iloc[cid]["material_name"], df.iloc[cid]["natoms"])
    script, div = components(plot)
-   return render_template("dos.html",script=script, div=div,formula=c["formula"],c_atts=zip(resources.dos_cols,vals))
+   return render_template("dos.html",script=script, div=div,formula=c["formula_html"],dos_columns_groups=groups_with_vals)
 
 @app.route('/correlations')
 def corr_page():
-   plot = plot_corr(df[resources.axis_columns])
+   plot = plot_corr(df[resources.corr_cols])
    script, div = components(plot)
    return render_template("corr.html",script=script, div=div)
 
@@ -77,7 +81,14 @@ def about():
 
 @app.route('/datatable')
 def table_page():
-  #table_page()
+  df_rounded = df.round(
+    {"Curie temperature (K)":0,
+    "gravimetric moment (emu/g)":1,
+    "largest local moment (µB)":2,
+    })
+
+  df_rounded = df_rounded.fillna("")
+  print(df_rounded.head())
   return render_template("datatable.html", df=df_rounded.iterrows())
 
 if __name__ == '__main__':

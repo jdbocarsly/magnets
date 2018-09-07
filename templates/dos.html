@@ -12,30 +12,33 @@
 <div class="row">
 
 <div class="col-md-6 dosplot">
-  <h1>{{formula}}</h1>
+  <h1>{{ formula|safe }}</h1>
   {{ script|safe }}
   {{ div|safe }}
 </div>
 
 <div class="col-md-6">
-
   <h3>Experimental and calculated data</h3>
-  <table id="dos-table"  class="table table-hover">
-      <thead>
+
+
+{% for group_name, group in dos_columns_groups %}
+  <table  class="table table-hover">
+    <thead>
         <tr>
-            <th>property</th>
-            <th>value</th>
+            <th colspan="2">{{ group_name }}</th>
         </tr>
     </thead>
   <tbody>
-  {% for att_name, att in c_atts %}
+  {% for name, prop in group %}
       <tr>
-        <td>{{att_name}}</td>
-        <td>{{att|safe}}</td>
+        <td>{{name}}</td>
+        <td>{{prop|safe}}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+{% endfor %}
+
 </div>
 </div>
 
