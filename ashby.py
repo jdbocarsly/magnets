@@ -69,8 +69,8 @@ def main_plot(df, x_axis, y_axis,color):
       p.add_layout(color_bar,"right")
    
    #to avoid weird taptool behavior
-   #renderer = p.select(name="circs")[0]
-   #renderer.nonselection_glyph=renderer.glyph
+   renderer = p.select(name="circs")[0]
+   renderer.nonselection_glyph=renderer.glyph
 
    hover = p.select(type=HoverTool)
    hover.tooltips = [
