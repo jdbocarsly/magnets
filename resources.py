@@ -57,6 +57,7 @@ dos_columns_groups = [
     "class",
     "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
     "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
+    "source (experimental)",
     ]),
 ("calculated magnetic properties",
     [

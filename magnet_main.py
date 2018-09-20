@@ -60,12 +60,16 @@ def single_compound_view(cid):
    # vals = ["{:.2f}".format(c[x]) if isinstance(c[x], (np.floating, float)) else c[x] for x in resources.dos_cols]
 
    groups_with_vals = []
-   for name, group in resources.dos_columns_groups:
+   for category_name, parameters in resources.dos_columns_groups:
       # sorry about this line. The end is to filter out delta Sm labels from showing up at NaN if the data is not available
-      vals = ["{:.2f}".format(c[x]) if isinstance(c[x], (np.floating, float)) else c[x] for x in group if not (isinstance(c[x], (np.floating, float)) and np.isnan(c[x]))]
-      groups_with_vals.append( (name, list(zip(group, vals))) )
+      parameters = [x for x in parameters if not (isinstance(c[x], (np.floating, float)) and np.isnan(c[x]))]
 
-   [print(x) for x in groups_with_vals]
+      vals = ["{:.2f}".format(c[x]) if isinstance(c[x], (np.floating, float)) else c[x] for x in parameters] 
+      print('\n',category_name,'\n')
+      [print(g,v) for g,v in zip(parameters,vals)]
+      groups_with_vals.append( (category_name, list(zip(parameters, vals))) )
+
+   # [print(x) for x in groups_with_vals]
    plot = create_dosplot(df.iloc[cid]["material_name"], df.iloc[cid]["natoms"])
    script, div = components(plot)
    return render_template("dos.html",script=script, div=div,formula=c["formula_html"],dos_columns_groups=groups_with_vals)
