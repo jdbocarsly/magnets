@@ -53,7 +53,10 @@ def main_plot(df, x_axis, y_axis,color):
          p.circle(x_axis, y_axis, color=c[i],
             size=sz, line_color=c[i], alpha=0.5, hover_alpha=1, hover_line_color="#ff7044",
             line_width=1.5, name="circs_{}".format(i), line_alpha=1, legend=item,muted_alpha=0.05, source=source2)
- 
+
+         #to avoid weird taptool behavior
+         renderer = p.select(name="circs_{}".format(i))[0]
+         renderer.nonselection_glyph=renderer.glyph
 
 
    else:
@@ -68,9 +71,9 @@ def main_plot(df, x_axis, y_axis,color):
                      label_standoff=12, border_line_color=None, location=(0,0))
       p.add_layout(color_bar,"right")
    
-   #to avoid weird taptool behavior
-   renderer = p.select(name="circs")[0]
-   renderer.nonselection_glyph=renderer.glyph
+      #to avoid weird taptool behavior
+      renderer = p.select(name="circs")[0]
+      renderer.nonselection_glyph=renderer.glyph
 
    hover = p.select(type=HoverTool)
    hover.tooltips = [

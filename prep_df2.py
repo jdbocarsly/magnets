@@ -22,7 +22,7 @@ df2["source (experimental)"] = df["doi_link"]
 #df2["all_moments"]  = df["all_moments"]
 
 #magnetism
-df2["energy of spin-polarization (eV/atom)"]=df["sp_eng"]
+df2["energy of spin-polarization (eV/atom)"]=df["spin_polarization_energy"]/df["natoms"]
 df2["magnetic deformation (Σm), %"]=df["magnetic_deformation"]
 df2["largest local moment (µB)"]=df["max_moment"]
 df2["gravimetric moment (emu/g)"]=df["grav_moment"].abs()

@@ -65,9 +65,9 @@ dos_columns_groups = [
     "volumetric moment (emu/cm³)",
     "moment per atom (µB/atom)",
     "largest local moment (µB)",
-    # "number of unique magnetic sites",
-    #"closest magnetic ion spacing (Å)",
-    #"energy of spin-polarization (eV/atom)",
+    "number of unique magnetic sites",
+    "closest magnetic ion spacing (Å)",
+    "energy of spin-polarization (eV/atom)",
     "magnetic deformation (Σm), %",
 #    "Σm x gravimetric moment",
     ]),
@@ -110,8 +110,9 @@ corr_cols = [
 "volumetric moment (emu/cm³)",
 "moment per atom (µB/atom)",
 "largest local moment (µB)",
-#"DOS of nonmagnetic state at fermi level (states/eV/atom)",
-#"DOS of nonmagnetic state at fermi level (states/eV/mag. ion)",
+"nonmag. DOS at fermi level (states/eV/atom)",
+"nonmag. DOS at fermi level (states/eV/mag. ion)",
+"energy of spin-polarization (eV/atom)",
 "spin polarization at fermi level (%)",
 "density (g/cm³)",
 #"closest magnetic ion spacing (Å)",
@@ -149,8 +150,8 @@ axis_columns_groups = [
     ]),
 ("DOS-related properties",
     [
-    "DOS of nonmagnetic state at fermi level (states/eV/atom)",
-    "DOS of nonmagnetic state at fermi level (states/eV/mag. ion)",
+    "nonmag. DOS at fermi level (states/eV/atom)",
+    "nonmag. DOS at fermi level (states/eV/mag. ion)",
     "spin polarization at fermi level (%)",
     ]),
 ("magnetocaloric properties",
@@ -180,5 +181,5 @@ axis_columns = [
 
 discrete_columns = {
 'element carrying largest moment':["Cr","Mn","Fe","Co","Ni"],
-'class':["heusler","perovskite","antiperovskite","Co2P","MnAs"],
+'class':["oxide","heusler","Ni2In-TiNiSi","Fe2P","spinel","NiAs"],
 }
