@@ -82,8 +82,9 @@ def plot_corr(df, cmap_name="RdBu", method="pearson"):
 
    source = ColumnDataSource(dict(x=x,y=y,color=colors,pearson=pearson,spearman=spearman))
 
+   # change plot width to make it look more suqare if changing the number of columns included!
    p = figure(tools="hover, tap", toolbar_location=None,
-            x_range=cols, y_range=list(reversed(cols)),plot_height=900, plot_width=1050,
+            x_range=cols, y_range=list(reversed(cols)),plot_height=900, plot_width=1100,
            sizing_mode='scale_height')
    curdoc().theme = Theme(json=corr_style)
    p.toolbar.logo = None
@@ -93,8 +94,8 @@ def plot_corr(df, cmap_name="RdBu", method="pearson"):
    p.rect("x", "y", color="color", width=1, height=1,source=source,
       name="rects", line_color=None,line_width=4,
       hover_line_color=HOVER_LINE_COLOR, hover_fill_color="color")
-   p.line([2.5,2.5],[0,12.5],line_color="black",line_dash="solid",line_width=2) # vert line
-   p.line([0,12.5],[10.5,10.5],line_color="black",line_dash="solid",line_width=2) # vert line
+   p.line([2.5,2.5],[0,len(cols)+0.5],line_color="black",line_dash="solid",line_width=2) # vert line
+   p.line([0,len(cols)+0.5],[len(cols)-1.5,len(cols)-1.5],line_color="black",line_dash="solid",line_width=2) # vert line
 
 
    colors = [cmapX(x) for x in np.linspace(-1,1,256)] 
