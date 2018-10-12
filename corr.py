@@ -84,7 +84,7 @@ def plot_corr(df, cmap_name="RdBu", method="pearson"):
 
    # change plot width to make it look more suqare if changing the number of columns included!
    p = figure(tools="hover, tap", toolbar_location=None,
-            x_range=cols, y_range=list(reversed(cols)),plot_height=900, plot_width=1100,
+            x_range=cols, y_range=list(reversed(cols)),plot_height=900, plot_width=1075,
            sizing_mode='scale_height')
    curdoc().theme = Theme(json=corr_style)
    p.toolbar.logo = None
