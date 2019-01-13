@@ -1,5 +1,5 @@
 general:
-- put on server
+X put on server
 - check data... are lowest moment AFM?
 
 X format consistent navbar

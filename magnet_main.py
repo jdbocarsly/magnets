@@ -50,7 +50,7 @@ def ashby():
 
    return render_template("ashby.html", script=script, div=div,
       cols=resources.axis_columns, curr_x=xprm, curr_y=yprm, curr_c=cprm, col_groups=resources.axis_columns_groups,
-      color_cols=resources.axis_columns)
+      color_cols=resources.axis_columns_groups)
 
 @app.route('/c/<int:cid>')
 def single_compound_view(cid):

@@ -1,12 +1,14 @@
 import pandas as pd
+import numpy as np
 
 df_mcs = pd.read_pickle("new_processed_results.df")
 df_predictions = pd.read_pickle("new_predictions.df")
 df_dft = pd.concat([df_mcs, df_predictions])
 
-df_experimental = pd.read_csv("experimental_data.csv",sep='\t')
+df_experimental = pd.read_csv("experimental_data.csv",sep='\t', comment="#")
 
 df = pd.merge(df_dft, df_experimental, on="material_name")
+# df = df[df["material_name"] != "WMn2Sn"]
 
 print(df.columns)
 df2= pd.DataFrame()
@@ -34,7 +36,9 @@ df2["average magnetic moment (µB)"]=df['average_magnetic_moment']
 #dos-related
 df2["spin polarization at fermi level (%)"] = df["spin_polarization_at_efermi"]*100.
 df2["nonmag. DOS at fermi level (states/eV/atom)"] = df['dos_at_efermi_nsp_per_atom']
+
 df2["nonmag. DOS at fermi level (states/eV/mag. ion)"] = df['dos_at_efermi_nsp_per_mag_ion']
+# df2["nonmag. DOS at fermi level (states/eV/mag. ion)"] = df2["nonmag. DOS at fermi level (states/eV/mag. ion)"].replace(np.inf, np.nan) #avoid infinites from dividing by 0
 
 #structural properties
 df2["density (g/cm³)"]=df["density"]
