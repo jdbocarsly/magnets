@@ -128,6 +128,8 @@ axis_columns_groups = [
     "class",
     "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
     "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
+    "−ΔSm(H = 2T) (J cm⁻³ K⁻¹)",
+    "−ΔSm(H = 5T) (J cm⁻³ K⁻¹)"
     ]),
 ("calculated magnetic properties",
     [
@@ -158,6 +160,8 @@ axis_columns_groups = [
     [
     "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
     "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
+    "−ΔSm(H = 2T) (J cm⁻³ K⁻¹)",
+    "−ΔSm(H = 5T) (J cm⁻³ K⁻¹)",
     "magnetic deformation (Σm), %",
     ]),
 ]
@@ -183,3 +187,9 @@ discrete_columns = {
 'element carrying largest moment':["Cr","Mn","Fe","Co","Ni"],
 'class':["oxide","heusler","Ni2In-TiNiSi","Fe2P","spinel","NiAs"],
 }
+
+
+
+
+
+

@@ -19,7 +19,8 @@ df2["−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)"]=-df["DSm_2T"]
 df2["−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)"]=-df["DSm_5T"]
 df2["Curie temperature (K)"]=df["Curie temperature (K)"]
 df2["source (experimental)"] = df["doi_link"]
-
+df2["−ΔSm(H = 2T) (J cm⁻³ K⁻¹)"]=-df["DSm_2T"]/df["density"]*1000
+df2["−ΔSm(H = 5T) (J cm⁻³ K⁻¹)"]=-df["DSm_5T"]/df["density"]*1000
 #DFT:
 #df2["all_moments"]  = df["all_moments"]
 
