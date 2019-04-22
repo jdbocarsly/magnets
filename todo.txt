@@ -9,7 +9,7 @@ X pull DOS from braid for predictions
 - maybe deliver corr (and dosplots?) as static?
 X data table page (pandas? filterable?) PRELIM DONE
 - alternate (shorter titles?), units/no units -- probably easiest as DF columns
-- refactor styles into one master style, and other styles as necessary TAKE FROM SE APP
+X refactor styles into one master style, and other styles as necessary TAKE FROM SE APP
 - correlations on the main plot?
 
 about:
@@ -19,19 +19,20 @@ about:
 dosplot:
 - vertical scaling
 - cifs
-- citations     
+X citations     
 - aesthetics
 - navbar
-- reformat table to put units on left
-- put words in a sensible order
+X reformat table to put units on left
+X put words in a sensible order
 - give all moments
+-put the compound name in the header (show in tab title)
 
 corrplot:
 - change/shorten names
 - corrplot comes down below?
 
 Ashby:
-- switch button (switch x and y axes)
+X switch button (switch x and y axes)
 - suggested axis choices for main page
 X colors for discrete categories on the main page
 overall: 
@@ -39,10 +40,12 @@ X filter by elements?
 
 
 Datatable:
-collapsable columns
+- collapsable columns
+- select which columns are shown. This would be best to do after shortening names
 
 new covariants:
-number of structurally distinct magnetic sites
-number of unique magnetic elements
+X number of structurally distinct magnetic sites
+X number of unique magnetic elements
+
 
 

@@ -128,8 +128,8 @@ axis_columns_groups = [
     "class",
     "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
     "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
-    "−ΔSm(H = 2T) (J cm⁻³ K⁻¹)",
-    "−ΔSm(H = 5T) (J cm⁻³ K⁻¹)"
+    "−ΔSm(H = 2T) (mJ cm⁻³ K⁻¹)",
+    "−ΔSm(H = 5T) (mJ cm⁻³ K⁻¹)"
     ]),
 ("calculated magnetic properties",
     [
@@ -160,8 +160,8 @@ axis_columns_groups = [
     [
     "−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)",
     "−ΔSm(H = 5T) (J kg⁻¹ K⁻¹)",
-    "−ΔSm(H = 2T) (J cm⁻³ K⁻¹)",
-    "−ΔSm(H = 5T) (J cm⁻³ K⁻¹)",
+    "−ΔSm(H = 2T) (mJ cm⁻³ K⁻¹)",
+    "−ΔSm(H = 5T) (mJ cm⁻³ K⁻¹)",
     "magnetic deformation (Σm), %",
     ]),
 ]
