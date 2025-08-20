@@ -1,0 +1,15 @@
+[project]
+name = "proxy-flask"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "~=3.10"
+dependencies = [
+    "bokeh~=2.4",
+    "cycler>=0.12.1",
+    "flask>=3.1.1",
+    "gunicorn>=23.0.0",
+    "matplotlib>=3.10.5",
+    "numpy==1.23.5",
+    "pandas>=2.1.0",
+]
