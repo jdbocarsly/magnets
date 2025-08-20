@@ -1,14 +1,15 @@
 from itertools import product
-from matplotlib import cm
-import numpy as np
-from matplotlib.colors import rgb2hex
-from bokeh.plotting import figure, ColumnDataSource
-from bokeh.palettes import magma
-from bokeh.models import HoverTool, TapTool, OpenURL, ColorBar, LinearColorMapper
-from bokeh.io import curdoc
-from bokeh.themes import Theme
 
+import numpy as np
+from bokeh.io import curdoc
 from bokeh.layouts import gridplot
+from bokeh.models import (ColorBar, HoverTool, LinearColorMapper, OpenURL,
+                          TapTool)
+from bokeh.palettes import magma
+from bokeh.plotting import ColumnDataSource, figure
+from bokeh.themes import Theme
+from matplotlib import cm
+from matplotlib.colors import rgb2hex
 
 HOVER_LINE_COLOR = "#b20340"##ffd400"
 
@@ -64,7 +65,7 @@ def plot_corr(df, cmap_name="RdBu", method="pearson"):
    #del df["cid"]
    cmap  = cm.get_cmap(name=cmap_name)
    # cmap takes a value between 0 and 1. We want to make it take a value between -1 and 1
-   cmapX = lambda x: rgb2hex(cmap((x+1)/2))
+   cmapX = lambda x: rgb2hex(cmap((x+1)/2))  # noqa: E731
 
    corrP = df.corr(method="pearson")
    corrS = df.corr(method="spearman")
@@ -72,7 +73,7 @@ def plot_corr(df, cmap_name="RdBu", method="pearson"):
    cols = list(corrP.columns)
    coordinates = list(product(cols, cols))
    x,y  = zip(*coordinates)
-   #print(coordinates)
+   # print(coordinates)
 
    pearson  = [corrP[i][j] for i,j in coordinates]
    spearman = [corrS[i][j] for i,j in coordinates]
@@ -94,8 +95,8 @@ def plot_corr(df, cmap_name="RdBu", method="pearson"):
    p.rect("x", "y", color="color", width=1, height=1,source=source,
       name="rects", line_color=None,line_width=4,
       hover_line_color=HOVER_LINE_COLOR, hover_fill_color="color")
-   p.line([2.5,2.5],[0,len(cols)+0.5],line_color="black",line_dash="solid",line_width=2) # vert line
-   p.line([0,len(cols)+0.5],[len(cols)-1.5,len(cols)-1.5],line_color="black",line_dash="solid",line_width=2) # vert line
+   p.line([2,2],[0,len(cols)+0.5],line_color="black",line_dash="solid",line_width=2) # vert line
+   p.line([0,len(cols)+0.5],[len(cols)-2,len(cols)-2],line_color="black",line_dash="solid",line_width=2) # vert line
 
 
    colors = [cmapX(x) for x in np.linspace(-1,1,256)] 
@@ -105,11 +106,10 @@ def plot_corr(df, cmap_name="RdBu", method="pearson"):
                      title_text_font_style="italic", title_text_font_size="14pt", title="\tr", title_text_align="left")
    p.add_layout(color_bar, 'right')
    hover = p.select(type=HoverTool)
-   nums = list(range(len(coordinates)))
    hover.tooltips = [
-   ("correlation","$x vs. $y"),
-   ("Spearman's r","@spearman"),
-   ("Pearson's r", "@pearson")
+      ("correlation","@x vs. @y"),
+      ("Spearman's r","@spearman"),
+      ("Pearson's r", "@pearson")
    ]
 
    #to avoid weird taptool behavior
@@ -123,4 +123,3 @@ def plot_corr(df, cmap_name="RdBu", method="pearson"):
 
 if __name__ == '__main__':
    test()
-

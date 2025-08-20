@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 from os.path import join as j
+
 import pandas as pd
-#from bokeh.charts import output_file, show, Line
-from bokeh.plotting import figure, output_file, show, ColumnDataSource
-from bokeh.models import HoverTool, CrosshairTool
+from bokeh.models import CrosshairTool
 from bokeh.models import DataRange1d as bmdr
+from bokeh.models import HoverTool
+#from bokeh.charts import output_file, show, Line
+from bokeh.plotting import ColumnDataSource, figure, output_file, show
 from numpy import arange
 
 #todo:
@@ -30,7 +32,7 @@ def create_dosplot(compound, atoms_per_unit_cell):
    df2["udos"] = df2["udos"]/atoms_per_unit_cell
    df2["ddos"] = df2["ddos"]/atoms_per_unit_cell
 
-   p = figure(x_axis_label=r"E - Ef (eV)", y_axis_label="density of states (states/eV atom)", responsive=True,
+   p = figure(x_axis_label=r"E - Ef (eV)", y_axis_label="density of states (states/eV atom)", sizing_mode="stretch_width",
       tools=TOOLS,active_drag="box_zoom",
       x_range=bmdr(start=-5, end=5, bounds=(-10,10)),
       y_range=bmdr(start=-4, end=4, bounds=(-10,10))
@@ -82,7 +84,3 @@ def create_dosplot(compound, atoms_per_unit_cell):
    p.line(x_v, y_v, line_color="black", line_dash="solid", line_width=1)
 
    return p
-
-
-
-
