@@ -2,10 +2,8 @@ from itertools import product
 
 import numpy as np
 from bokeh.io import curdoc
-from bokeh.layouts import gridplot
 from bokeh.models import (ColorBar, HoverTool, LinearColorMapper, OpenURL,
                           TapTool)
-from bokeh.palettes import magma
 from bokeh.plotting import ColumnDataSource, figure
 from bokeh.themes import Theme
 from matplotlib import cm

@@ -1,10 +1,10 @@
-from bokeh.models import HoverTool, OpenURL, TapTool, LinearColorMapper,ColorBar
-from bokeh.models import HoverTool, OpenURL, TapTool, CustomJS, LinearColorMapper,ColorBar
-from bokeh.palettes import Plasma256, brewer
-from bokeh.plotting import curdoc, figure, ColumnDataSource
+import resources
+from bokeh.models import (ColorBar, HoverTool, LinearColorMapper, OpenURL,
+                          TapTool)
+from bokeh.palettes import brewer
+from bokeh.plotting import ColumnDataSource, curdoc, figure
 from bokeh.themes import Theme
 
-import resources
 
 def main_plot(df, x_axis, y_axis,color):
    source = ColumnDataSource(df)

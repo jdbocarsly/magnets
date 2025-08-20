@@ -6,7 +6,7 @@ from bokeh.models import CrosshairTool
 from bokeh.models import DataRange1d as bmdr
 from bokeh.models import HoverTool
 #from bokeh.charts import output_file, show, Line
-from bokeh.plotting import ColumnDataSource, figure, output_file, show
+from bokeh.plotting import ColumnDataSource, figure
 from numpy import arange
 
 #todo:

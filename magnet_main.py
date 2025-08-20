@@ -3,16 +3,9 @@ import pandas as pd
 import resources
 from ashby import main_plot
 from bokeh.embed import components
-from bokeh.io import curdoc
-from bokeh.layouts import row
-from bokeh.models import (ColorBar, CustomJS, HoverTool, LinearColorMapper,
-                          OpenURL, TapTool)
-from bokeh.palettes import Magma256, Plasma256, Viridis256, brewer
-from bokeh.plotting import ColumnDataSource, curdoc, figure
-from bokeh.themes import Theme
 from corr import plot_corr
 from dosplot import create_dosplot
-from flask import Flask, render_template, request, url_for
+from flask import Flask, abort, render_template, request
 
 app = Flask(__name__)
 
@@ -32,15 +25,15 @@ df["class"] = df["class"].fillna("classless")
 @app.route('/ashby')
 def ashby():
    xprm = request.args.get("x_axis")
-   if xprm == None:
+   if xprm is None:
       xprm = "Curie temperature (K)"
 
    yprm = request.args.get("y_axis")
-   if yprm == None:
+   if yprm is None:
       yprm = "volumetric moment (emu/cm³)"
 
    cprm = request.args.get("color_axis")
-   if cprm == None:
+   if cprm is None:
       cprm = "largest local moment (µB)"
 
    plot = main_plot(df, xprm, yprm,cprm)
@@ -52,7 +45,8 @@ def ashby():
 
 @app.route('/c/<int:cid>')
 def single_compound_view(cid):
-   if cid >= len(df): return index()
+   if cid >= len(df):
+      abort(404)
    c = df.iloc[cid]
    #c = c.dropna()
    # vals = ["{:.2f}".format(c[x]) if isinstance(c[x], (np.floating, float)) else c[x] for x in resources.dos_cols]
