@@ -3,7 +3,7 @@ name = "bocarsly-magnets"
 version = "0.1.0"
 description = "A website for visualizing data from: J.D. Bocarsly, E.E. Levin, C.A.C. Garcia, K. Schwennicke, S.D. Wilson, R. Seshadri, A Simple Computational Proxy for Screening Magnetocaloric Compounds, Chem. Mater. 29 (2017) 1613−1622 https://doi.org/10.1021/acs.chemmater.6b04729"
 readme = "README.md"
-requires-python = "~=3.10"
+requires-python = "~=3.10.0"
 dependencies = [
     "bokeh~=2.4",
     "cycler>=0.12.1",
