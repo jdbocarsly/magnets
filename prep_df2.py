@@ -26,6 +26,9 @@ df2["Curie temperature (K)"]=df["Curie temperature (K)"]
 df2["source (experimental)"] = df["doi_link"]
 df2["−ΔSm(H = 2T) (mJ cm⁻³ K⁻¹)"]=-df["DSm_2T"]*df["density"]
 df2["−ΔSm(H = 5T) (mJ cm⁻³ K⁻¹)"]=-df["DSm_5T"]*df["density"]
+
+df2["sqrtDSm"]=np.sqrt(-df["DSm_5T"])
+df2["magdef_squared"] = df["magnetic_deformation"]**2
 #df2["deltaSm_per_mag_ion"]=-1*df["DSm_5T"]/1000.*df["molar_mass"]*df["natoms"]/df["nmag_ions"]
 #df2["deltaSm_per_atom"]=-1*df["DSm_5T"]/1000.*df["molar_mass"]
 #J      kg     g               mol_fu
@@ -48,8 +51,11 @@ df2["sigma_m_times_grav_moment"]=df["magnetic_deformation"]*df["grav_moment"].ab
 #dos-related
 df2["spin polarization at fermi level (%)"] = df["spin_polarization_at_efermi"]*100.
 df2["nonmag. DOS at fermi level (states/eV/atom)"] = df['dos_at_efermi_nsp_per_atom']
-
 df2["nonmag. DOS at fermi level (states/eV/mag. ion)"] = df['dos_at_efermi_nsp_per_mag_ion']
+df2["sp_dos_at_efermi_up"] = df["dos_at_efermi_sp_up"]
+df2["sp_dos_at_efermi_down"] = df["dos_at_efermi_sp_down"]
+df2["sp_dos_at_efermi_total"] = df["dos_at_efermi_sp_up"]+df["dos_at_efermi_sp_down"]
+
 # df2["nonmag. DOS at fermi level (states/eV/mag. ion)"] = df2["nonmag. DOS at fermi level (states/eV/mag. ion)"].replace(np.inf, np.nan) #avoid infinites from dividing by 0
 
 #structural properties
