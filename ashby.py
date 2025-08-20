@@ -60,7 +60,7 @@ def main_plot(df, x_axis, y_axis,color):
 
 
    else:
-      # for non catecorical, use a color transform
+      # for non categorical, use a color transform
       colormapper = LinearColorMapper(palette="Plasma256",low=df[color].min(), high=df[color].max())
       color_attr = {'field':color, 'transform': colormapper}
       p.circle(x_axis, y_axis, color=color_attr,
