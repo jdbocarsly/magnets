@@ -1,20 +1,18 @@
-from flask import Flask, render_template, request, url_for
 import numpy as np
 import pandas as pd
-from bokeh.layouts import row, widgetbox
-from bokeh.models import HoverTool, OpenURL, TapTool, CustomJS, LinearColorMapper,ColorBar
-from bokeh.palettes import Viridis256, Magma256, Plasma256, brewer
-from bokeh.plotting import curdoc, figure, ColumnDataSource
-from bokeh.embed import components
-from bokeh.io import curdoc
-from bokeh.themes import Theme
-
 import resources
 from ashby import main_plot
-from dosplot import create_dosplot
+from bokeh.embed import components
+from bokeh.io import curdoc
+from bokeh.layouts import row
+from bokeh.models import (ColorBar, CustomJS, HoverTool, LinearColorMapper,
+                          OpenURL, TapTool)
+from bokeh.palettes import Magma256, Plasma256, Viridis256, brewer
+from bokeh.plotting import ColumnDataSource, curdoc, figure
+from bokeh.themes import Theme
 from corr import plot_corr
-
-
+from dosplot import create_dosplot
+from flask import Flask, render_template, request, url_for
 
 app = Flask(__name__)
 
@@ -97,5 +95,4 @@ def table_page():
   return render_template("datatable.html", df=df_rounded.iterrows())
 
 if __name__ == '__main__':
-   app.run(debug=True)
-
+   app.run(debug=True, port=5005)
