@@ -89,11 +89,11 @@ def build(output=ROOT):
     plot = plot_corr(df[resources.corr_cols])
     plot.select_one(TapTool).callback = CustomJS(code="""
         const source = cb_data.source;
-        const i = source.selected.indices[0];
-        if (i === undefined) return;
-        const query = new URLSearchParams({x_axis: source.data.x[i],
-            y_axis: source.data.y[i], color_axis: source.data.y[i]});
-        window.open('../?' + query.toString(), '_blank');
+        for (const i of source.selected.indices) {
+            const query = new URLSearchParams({x_axis: source.data.x[i],
+                y_axis: source.data.y[i], color_axis: source.data.y[i]});
+            window.open('../?' + query.toString(), '_blank');
+        }
     """)
     script, div = components(plot, theme=Theme(json={}))
     render('correlations/index.html', 'corr.html', script=script, div=div)

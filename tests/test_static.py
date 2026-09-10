@@ -128,6 +128,35 @@ class StaticParity(unittest.TestCase):
     def test_browser_event_handlers(self):
         subprocess.run(['node', str(ROOT / 'tests/check_controls.js')], check=True)
 
+    def test_correlation_navigation(self):
+        html = (ROOT / 'correlations/index.html').read_text()
+        literal = re.search(r"const docs_json = ('.*');", html).group(1)
+        doc = next(iter(json.loads(unescape(ast.literal_eval(literal))).values()))
+        code = next(ref['attributes']['code'] for ref in doc['roots']['references']
+                    if ref['type'] == 'CustomJS')
+        subprocess.run(['node', '-e', '''
+            const vm = require('node:vm');
+            const fs = require('node:fs');
+            const assert = require('node:assert/strict');
+            const code = JSON.parse(fs.readFileSync(0, 'utf8'));
+            const source = {selected: {indices: [0, 1]}, data: {
+                x: ['−ΔSm(H = 2T) (J kg⁻¹ K⁻¹)', 'class'],
+                y: ['magnetic deformation (Σm), %', 'A&B + C']}};
+            const opened = [];
+            vm.runInNewContext('(function(){' + code + '})()', {
+                cb_data: {source}, URLSearchParams,
+                window: {open(url, target) { opened.push([url, target]); }}});
+            assert.equal(opened.length, 2);
+            opened.forEach(([path, target], i) => {
+                const url = new URL(path, 'https://example.test/magnets/correlations/');
+                assert.equal(url.pathname, '/magnets/');
+                assert.equal(url.searchParams.get('x_axis'), source.data.x[i]);
+                assert.equal(url.searchParams.get('y_axis'), source.data.y[i]);
+                assert.equal(url.searchParams.get('color_axis'), source.data.y[i]);
+                assert.equal(target, '_blank');
+            });
+        '''], input=json.dumps(code), text=True, check=True)
+
     def test_property_precision_and_missing_values(self):
         for _, row in self.df.iterrows():
             groups = property_groups(row)
