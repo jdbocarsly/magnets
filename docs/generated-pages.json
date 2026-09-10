@@ -169,5 +169,8 @@
   "c/99/index.html",
   "correlations/index.html",
   "datatable/index.html",
-  "index.html"
+  "index.html",
+  "static/ashby.js",
+  "static/engr_styles.css",
+  "static/navbar.css"
 ]

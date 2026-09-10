@@ -1,1 +1,2 @@
-/docs/** linguist-generated=true
+# Generated output preserves source/template formatting verbatim.
+/docs/** linguist-generated=true -whitespace
