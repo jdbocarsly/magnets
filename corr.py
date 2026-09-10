@@ -46,7 +46,7 @@ corr_style = {'attrs': {
 def test():
    import pandas as pd
    from bokeh.plotting import show
-   df = pd.read_pickle("clean_pickle.df")
+   df = pd.read_pickle("clean_pickle3.df")
    p = plot_corr(df)
    show(p)
 

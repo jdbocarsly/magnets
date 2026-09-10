@@ -9,11 +9,12 @@ from flask import Flask, abort, render_template, request
 
 app = Flask(__name__)
 
-df = pd.read_pickle("clean_pickle2.df")
+df = pd.read_pickle("clean_pickle3.df")
 df["formula_nosubs"] = df["formula"]
 df["formula_html"]=[resources.make_html_subscripts(f) for f in df["formula"]]
 df["formula"] = [resources.make_unicode_subscripts(name) for name in df["formula"]]
 df["class"] = df["class"].fillna("classless")
+
 
 
 
