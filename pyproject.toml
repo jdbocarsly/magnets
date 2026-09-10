@@ -11,3 +11,22 @@ dependencies = [
     "numpy==1.23.5",
     "pandas>=2.1.0",
 ]
+
+[dependency-groups]
+dev = ["pre-commit>=4", "pre-commit-hooks>=5", "ruff>=0.12"]
+
+[tool.ruff]
+target-version = "py310"
+force-exclude = true
+extend-exclude = ["archive", "data", "docs", "scripts/legacy"]
+cache-dir = ".cache/ruff"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+# Configure a writable Matplotlib cache before importing plotting modules.
+"magnet_site/build.py" = ["E402"]
+"tests/test_static.py" = ["E402"]
+# Set the repository import path for direct script execution.
+"scripts/check_rebuild.py" = ["E402"]
