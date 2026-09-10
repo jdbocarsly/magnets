@@ -9,6 +9,20 @@ __pycache__/
 # Local research archive, raw calculations and old logs (not site content)
 /archive/local/
 
+# Superseded local files retained only as historical working copies
+/archive/notes/rsync_command.txt
+/archive/web/static/styles.css
+/archive/web/templates/datatable_customizable.html
+/data/legacy/all_moments_pickled.df
+/data/legacy/experimental_data.xlsx
+/data/legacy/new_predictions.df
+/data/legacy/new_processed_results.csv
+/data/legacy/new_processed_results.df
+/scripts/legacy/hello.py
+/scripts/legacy/prep_df3.py
+/scripts/legacy/proxy_analyzer_web.py
+/scripts/legacy/resources_old.py
+
 # Editor / operating-system files
 .DS_Store
 .DS_store
