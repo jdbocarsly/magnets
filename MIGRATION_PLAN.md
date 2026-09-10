@@ -79,3 +79,24 @@ and serve master from the GitHub Pages repository root with `.nojekyll`.
 - The browser plugin reported no available browsers during implementation.
   Document/data parity checks can proceed; screenshot and live interaction
   verification remain a separate outstanding check until a browser is available.
+
+## Verification results
+
+- All retained source values match the original latest dataframe exactly.
+- 88 JavaScript selections match the independently serialized baseline Python
+  plots, covering every selectable field and all eight plot structures.
+- Correlation and representative DOS model graphs match the baseline, including
+  default fonts, dimensions, tools, glyphs and legends (apart from URL callback
+  mechanics). Every correlation coefficient and all 164 available DOS series
+  pass numerical checks.
+- DOM-adapter tests cover query defaults, axis/color changes, swap, back/forward
+  restoration, rapid changes and disposal; callback tests cover encoded
+  correlation links and multiple selected cells.
+- All local links and assets resolve at both `/` and `/magnets/` prefixes.
+- A separate temporary rebuild matches all 170 pages after normalizing
+  incidental Bokeh identifiers and reference ordering.
+- The preview server returned HTTP 200 for all 171 generated files (170 pages
+  plus `.nojekyll`). Browser screenshots, actual canvas interactions and
+  DataTables UI checks remain unverified due to the unavailable browser.
+- Flask/Gunicorn, Docker, WSGI and Docker CI are removed. Their source is
+  recoverable from the baseline commit. Publishing has not been enabled.
