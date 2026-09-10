@@ -6,7 +6,7 @@ from bokeh.models import (ColorBar, HoverTool, LinearColorMapper, OpenURL,
                           TapTool)
 from bokeh.plotting import ColumnDataSource, figure
 from bokeh.themes import Theme
-from matplotlib import cm
+from matplotlib import colormaps
 from matplotlib.colors import rgb2hex
 
 HOVER_LINE_COLOR = "#b20340"##ffd400"
@@ -50,7 +50,7 @@ def test():
    p = plot_corr(df)
    show(p)
 
-def plot_corr(df, cmap_name="RdBu", method="pearson"):
+def plot_corr(df, cmap_name="RdBu", method="pearson", ashby_url='/?x_axis=@x&y_axis=@y&color_axis=@y'):
    '''Function plots a graphical correlation matrix for each pair of columns in the dataframe.
 
    Input:
@@ -61,7 +61,7 @@ def plot_corr(df, cmap_name="RdBu", method="pearson"):
    '''
    df = df.copy()
    #del df["cid"]
-   cmap  = cm.get_cmap(name=cmap_name)
+   cmap = colormaps[cmap_name]
    # cmap takes a value between 0 and 1. We want to make it take a value between -1 and 1
    cmapX = lambda x: rgb2hex(cmap((x+1)/2))  # noqa: E731
 
@@ -114,7 +114,7 @@ def plot_corr(df, cmap_name="RdBu", method="pearson"):
    renderer = p.select(name="rects")[0]
    renderer.nonselection_glyph=renderer.glyph
    taptool = p.select(type=TapTool)
-   taptool.callback = OpenURL(url="/?x_axis=@x&y_axis=@y&color_axis=@y")
+   taptool.callback = OpenURL(url=ashby_url)
 
    #plot = gridplot([[p]], sizing_mode='scale_height')
    return p

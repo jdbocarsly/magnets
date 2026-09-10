@@ -64,3 +64,18 @@ and serve master from the GitHub Pages repository root with `.nojekyll`.
 2. Add curated canonical data and validation.
 3. Implement static rendering and browser interactions.
 4. Verify parity, remove server deployment, document build and check in output.
+
+## Implementation findings
+
+- Flask `components()` constructs a default-themed document. The old
+  `curdoc().theme` assignments never reached the plots. Preserve that observed
+  default theme explicitly; applying the unused theme dictionaries would change
+  the site's plot fonts and styling.
+- Eight serialized Python plot templates (numeric/categorical x/y/color) are
+  re-embedded by JavaScript when selectors change. This preserves the original
+  model structure and reload-style reset without an exhaustive combination build.
+- Matplotlib's removed `cm.get_cmap` is replaced by the equivalent named colormap
+  registry lookup to build the existing correlation palette.
+- The browser plugin reported no available browsers during implementation.
+  Document/data parity checks can proceed; screenshot and live interaction
+  verification remain a separate outstanding check until a browser is available.

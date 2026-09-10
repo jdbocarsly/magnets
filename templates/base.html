@@ -5,7 +5,7 @@
 
 <link rel="stylesheet" type="text/css"
     href="https://fonts.googleapis.com/css?family=Open+Sans:Regular,Semi-bold,RegularItalic|Roboto+Slab:Regular|Lato:Regular,bold">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ url_for('static',filename='engr_styles.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ url_for('static',filename='navbar.css') }}" type="text/css">
 <!-- <link
@@ -22,10 +22,10 @@
 <body>
 
 {% set navigation_bar = [
-    ('/ashby', 'ashby', 'Ashby plot'),
-    ('/correlations', 'corr', 'Correlations'),
-    ('/datatable', 'datatable', 'Data Table'),
-    ('/about','about','About')
+    ('ashby/', 'ashby', 'Ashby plot'),
+    ('correlations/', 'corr', 'Correlations'),
+    ('datatable/', 'datatable', 'Data Table'),
+    ('about/','about','About')
 ] -%}
 {#{% set active_page = active_page|default('index') -%}#}
 
@@ -33,13 +33,13 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/"><b>UCSB Magnet database</b></a>
+      <a class="navbar-brand" href="{{ site_root }}"><b>UCSB Magnet database</b></a>
     </div>
 
     <ul class="nav navbar-nav">
       {% for href, id, caption in navigation_bar %}
         <li{% if id == active_page %} class="active"{% endif%}>
-        <a href="{{ href|e }}">{{ caption|e }}</a></li>
+        <a href="{{ site_root }}{{ href|e }}">{{ caption|e }}</a></li>
       {% endfor %}
     </ul>
   </div>

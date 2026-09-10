@@ -15,6 +15,7 @@
   <h1>{{ formula|safe }}</h1>
   {{ script|safe }}
   {{ div|safe }}
+  {% if dos_unavailable %}<p>Density-of-states data unavailable.</p>{% endif %}
 </div>
 
 <div class="col-md-6">

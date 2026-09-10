@@ -6,10 +6,9 @@ from bokeh.plotting import ColumnDataSource, curdoc, figure
 from bokeh.themes import Theme
 
 
-def main_plot(df, x_axis, y_axis,color):
+def main_plot(df, x_axis, y_axis,color, compound_url='/c/@cid'):
    source = ColumnDataSource(df)
 
-   print(type(x_axis), type(y_axis))
    #xs = df[x.value]
    #ys = df[y.value]
 
@@ -29,7 +28,6 @@ def main_plot(df, x_axis, y_axis,color):
    p.xaxis.axis_label = x_axis
    p.yaxis.axis_label = y_axis
 
-   print(kw)
    sz = 12
    # if size.value != 'None':
    #    groups = pd.qcut(df[size.value].values, len(SIZES))
@@ -49,7 +47,6 @@ def main_plot(df, x_axis, y_axis,color):
       for i, item in enumerate(items):
          df2 = df[df[color]==item]
          source2 = ColumnDataSource(df2)
-         print(df2)
          p.circle(x_axis, y_axis, color=c[i],
             size=sz, line_color=c[i], alpha=0.5, hover_alpha=1, hover_line_color="#ff7044",
             line_width=1.5, name="circs_{}".format(i), line_alpha=1, legend=item,muted_alpha=0.05, source=source2)
@@ -83,7 +80,7 @@ def main_plot(df, x_axis, y_axis,color):
    ]
 
    taptool = p.select(type=TapTool)
-   taptool.callback = OpenURL(url="/c/@cid")
+   taptool.callback = OpenURL(url=compound_url)
 
    p.toolbar.logo = "grey"
    return p

@@ -76,7 +76,7 @@ $(document).ready(function() {
     $('#datatable tbody').on('click', 'tr', function() {
       var data = table.row(this).data();
       //window.location.href = '/c/' + data[1]
-      url = '/c/' + data[1]
+      var url = '{{ site_root }}c/' + encodeURIComponent(data[1]) + '/'
       $('<a href="'+ url + '" target="_blank"></a>')[0].click();
     } );
 } );
