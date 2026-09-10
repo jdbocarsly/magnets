@@ -2,6 +2,7 @@
 import argparse
 import json
 import os
+import re
 from pathlib import Path
 from urllib.parse import urlencode
 
@@ -30,6 +31,18 @@ def property_groups(row):
     return groups
 
 
+def source_links(value):
+    """Repair only unambiguous relative DOI hrefs; keep visible citation text."""
+    def replace(match):
+        href = match.group(1)
+        if href.startswith(('dx.doi.org/', 'doi.org/')):
+            href = 'https://' + href
+        elif href.startswith('10.'):
+            href = 'https://doi.org/' + href
+        return 'href="' + href + '"'
+    return re.sub(r'href="([^"]+)"', replace, value)
+
+
 def safe_json(value):
     # Prevent embedded source text from closing the containing script element.
     return json.dumps(value, ensure_ascii=False, separators=(',', ':'), allow_nan=False).replace('<', '\\u003c')
@@ -40,6 +53,8 @@ def build(output=ROOT):
     output.mkdir(parents=True, exist_ok=True)
     source = load_data()
     df = display_data(source)
+    # Repair links only in property-table output; retain original source strings
+    # in plot data so scientific input and the original Bokeh documents agree.
     total, magnetocaloric = counts(source)
     env = Environment(loader=FileSystemLoader(ROOT / 'templates'),
                       autoescape=select_autoescape(['html']))
@@ -94,8 +109,10 @@ def build(output=ROOT):
             plot = create_dosplot(row.material_name, row.natoms)
             # Match Flask components(), which embedded an unthemed document.
             script, div = components(plot, theme=Theme(json={}))
+        display_row = row.copy()
+        display_row['source (experimental)'] = source_links(row['source (experimental)'])
         render(f'c/{row.cid}/index.html', 'dos.html', script=script, div=div,
-               formula=row.formula_html, dos_columns_groups=property_groups(row),
+               formula=row.formula_html, dos_columns_groups=property_groups(display_row),
                dos_unavailable=unavailable)
 
     write('.nojekyll', '')

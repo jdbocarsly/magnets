@@ -42,9 +42,9 @@ def create_dosplot(compound, atoms_per_unit_cell):
    line_width=2
    cds1 = ColumnDataSource(df1)
    cds2 = ColumnDataSource(df2)
-   p_nonsp = p.line("energy","dos", legend="No spin polarization", line_color="#606060", line_dash="solid", line_width=line_width, source=cds1)
-   p_up = p.line("energy", "udos", legend="Spin-up", line_color="#28A0BA", line_dash="solid", line_alpha=0.8, line_width=line_width, source=cds2)
-   p_down = p.line("energy", "ddos", legend="Spin-down", line_color="#DB7C06", line_dash="solid", line_alpha=0.8, line_width=line_width, source=cds2)
+   p_nonsp = p.line("energy","dos", legend_label="No spin polarization", line_color="#606060", line_dash="solid", line_width=line_width, source=cds1)
+   p_up = p.line("energy", "udos", legend_label="Spin-up", line_color="#28A0BA", line_dash="solid", line_alpha=0.8, line_width=line_width, source=cds2)
+   p_down = p.line("energy", "ddos", legend_label="Spin-down", line_color="#DB7C06", line_dash="solid", line_alpha=0.8, line_width=line_width, source=cds2)
 
    hover_nonsp = HoverTool(
       tooltips=[

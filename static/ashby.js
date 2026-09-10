@@ -21,7 +21,7 @@
       attrs.x = {field: selected[0]};
       attrs.y = {field: selected[1]};
       if (key[2] === 'n') {
-        for (const property of ['fill_color', 'line_color']) {
+        for (const property of ['fill_color', 'line_color', 'hatch_color']) {
           if (attrs[property] && attrs[property].field !== undefined) {
             attrs[property].field = selected[2];
           }

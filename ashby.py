@@ -49,7 +49,7 @@ def main_plot(df, x_axis, y_axis,color, compound_url='/c/@cid'):
          source2 = ColumnDataSource(df2)
          p.circle(x_axis, y_axis, color=c[i],
             size=sz, line_color=c[i], alpha=0.5, hover_alpha=1, hover_line_color="#ff7044",
-            line_width=1.5, name="circs_{}".format(i), line_alpha=1, legend=item,muted_alpha=0.05, source=source2)
+            line_width=1.5, name="circs_{}".format(i), line_alpha=1, legend_label=item,muted_alpha=0.05, source=source2)
 
          #to avoid weird taptool behavior
          renderer = p.select(name="circs_{}".format(i))[0]
