@@ -1,7 +1,7 @@
 // Compare the real browser transformation with independent Python plot output.
 const fs = require('node:fs');
 const assert = require('node:assert/strict');
-const {makeItem, normalize} = require('../static/ashby.js');
+const {makeItem, normalize} = require('../docs/static/ashby.js');
 const fixture = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 
 function canonical(item) {

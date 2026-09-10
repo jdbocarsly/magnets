@@ -4,10 +4,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-import resources
+from . import resources
+from .paths import ROOT, DATA, DOS
 
-ROOT = Path(__file__).resolve().parent
-DATA = ROOT / 'data' / 'magnets.csv'
 MISSING_DOS = {37: 'Co5Y'}
 
 
@@ -31,7 +30,7 @@ def load_data(path=DATA):
         if Path(row.material_name).name != row.material_name:
             raise ValueError(f'Invalid material identifier: {row.material_name}')
         for filename in ('nonsp_dost.dat', 'sp_dost.dat'):
-            if not (ROOT / 'dos_data' / row.material_name / filename).is_file():
+            if not (DOS / row.material_name / filename).is_file():
                 if MISSING_DOS.get(row.cid) != row.material_name:
                     raise ValueError(f'Missing DOS: {row.material_name}/{filename}')
     return df

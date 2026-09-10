@@ -15,13 +15,15 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import sys
 import tempfile
 import types
 import unittest
 from urllib.parse import unquote, urljoin, urlparse
 import warnings
+from unittest.mock import patch
 
-os.environ.setdefault('MPLCONFIGDIR', str(Path(__file__).resolve().parents[1] / '.mpl-cache'))
+os.environ.setdefault('MPLCONFIGDIR', str(Path(__file__).resolve().parents[1] / '.cache' / 'matplotlib'))
 
 import numpy as np
 import pandas as pd
@@ -31,11 +33,12 @@ from bokeh.util.warnings import BokehDeprecationWarning
 import matplotlib
 from matplotlib import cm
 
-from ashby_static import DEFAULTS, make_payload
-from build_static import property_groups
-from site_data import ROOT, counts, display_data, load_data
+from magnet_site.ashby_static import DEFAULTS, make_payload
+from magnet_site.build import property_groups
+from magnet_site.data import counts, display_data, load_data
+from magnet_site.paths import ROOT, OUTPUT, DOS, LEGACY_DATA, WEB
 from scripts.check_rebuild import canonical_document
-import resources
+from magnet_site import resources
 
 BASELINE = '05720c8'
 warnings.filterwarnings('ignore', category=BokehDeprecationWarning)
@@ -45,7 +48,8 @@ def baseline_module(filename):
     source = subprocess.check_output(['git', 'show', f'{BASELINE}:{filename}'],
                                      cwd=ROOT, text=True)
     module = types.ModuleType('baseline_' + filename[:-3])
-    with warnings.catch_warnings():
+    # The historical module imported resources from the old repository root.
+    with warnings.catch_warnings(), patch.dict(sys.modules, {'resources': resources}):
         warnings.simplefilter('ignore', DeprecationWarning)
         exec(compile(source, filename, 'exec'), module.__dict__)
     return module
@@ -90,7 +94,7 @@ class StaticParity(unittest.TestCase):
         cls.df = display_data(cls.raw)
 
     def test_data_preservation(self):
-        original = pd.read_pickle(ROOT / 'clean_pickle3.df')
+        original = pd.read_pickle(LEGACY_DATA / 'clean_pickle3.df')
         expected = original.loc[original.cid != 7].reset_index(drop=True)
         pd.testing.assert_frame_equal(expected, self.raw, check_exact=True)
         self.assertEqual(counts(self.raw), (165, 33))
@@ -129,7 +133,7 @@ class StaticParity(unittest.TestCase):
         subprocess.run(['node', str(ROOT / 'tests/check_controls.js')], check=True)
 
     def test_correlation_navigation(self):
-        html = (ROOT / 'correlations/index.html').read_text()
+        html = (OUTPUT / 'correlations/index.html').read_text()
         literal = re.search(r"const docs_json = ('.*');", html).group(1)
         doc = next(iter(json.loads(unescape(ast.literal_eval(literal))).values()))
         code = next(ref['attributes']['code'] for ref in doc['roots']['references']
@@ -169,12 +173,16 @@ class StaticParity(unittest.TestCase):
 
     def test_detail_and_correlation_plot_structure(self):
         old_dos = baseline_module('dosplot.py')
+        # Keep the baseline plotting code intact while redirecting its original
+        # dos_data path to the relocated inputs.
+        original_join = old_dos.j
+        old_dos.j = lambda first, *rest: original_join(DOS if first == 'dos_data' else first, *rest)
         old_corr = baseline_module('corr.py')
         # Restore the removed alias only within the baseline module. The named
         # palette is identical; no plot parameters or data are changed.
         old_corr.cm = types.SimpleNamespace(get_cmap=lambda name: matplotlib.colormaps[name])
         for cid in (None, 0, 8, 139):
-            path = ROOT / ('correlations/index.html' if cid is None else f'c/{cid}/index.html')
+            path = OUTPUT / ('correlations/index.html' if cid is None else f'c/{cid}/index.html')
             literal = re.search(r"const docs_json = ('.*');", path.read_text()).group(1)
             doc = next(iter(json.loads(unescape(ast.literal_eval(literal))).values()))
             with redirect_stderr(io.StringIO()):
@@ -189,7 +197,7 @@ class StaticParity(unittest.TestCase):
             self.assertEqual(canonical_document(doc), canonical_document(json_item(plot)['doc']))
 
     def test_generated_pages_assets_and_prefixes(self):
-        manifest = json.loads((ROOT / 'generated-pages.json').read_text())
+        manifest = json.loads((OUTPUT / 'generated-pages.json').read_text())
         self.assertEqual(sum(path.endswith('.html') for path in manifest), 170)
         self.assertNotIn('c/7/index.html', manifest)
         self.assertIn('c/139/index.html', manifest)
@@ -197,7 +205,7 @@ class StaticParity(unittest.TestCase):
             if not path.endswith('.html'):
                 continue
             parser = PageParser()
-            parser.feed((ROOT / path).read_text())
+            parser.feed((OUTPUT / path).read_text())
             for prefix in ('/', '/magnets/'):
                 base = 'https://example.test' + prefix + path.removesuffix('index.html')
                 for link in parser.links:
@@ -208,14 +216,26 @@ class StaticParity(unittest.TestCase):
                     # accidentally become broken local links.
                     self.assertTrue(parsed.path.startswith(prefix), (path, link))
                     relative = unquote(parsed.path[len(prefix):])
-                    target = ROOT / relative
+                    target = OUTPUT / relative
                     if parsed.path.endswith('/'):
                         target = target / 'index.html'
                     self.assertTrue(target.is_file(), (path, link, str(target)))
 
+    def test_self_contained_publish_directory(self):
+        manifest = set(json.loads((OUTPUT / 'generated-pages.json').read_text()))
+        actual = {path.relative_to(OUTPUT).as_posix() for path in OUTPUT.rglob('*')
+                  if path.is_file() and path.name != '.DS_Store'}
+        self.assertEqual(actual, manifest | {'generated-pages.json'})
+        for path in manifest:
+            self.assertFalse(path.endswith(('.py', '.df', '.csv', '.dat', '.zip')))
+        for path in (WEB / 'static').rglob('*'):
+            if path.is_file():
+                relative = path.relative_to(WEB)
+                self.assertEqual(path.read_bytes(), (OUTPUT / relative).read_bytes())
+
     def test_generated_correlation_and_dos_values(self):
         for cid in [None] + self.df.cid.tolist():
-            page = ROOT / ('correlations/index.html' if cid is None else f'c/{cid}/index.html')
+            page = OUTPUT / ('correlations/index.html' if cid is None else f'c/{cid}/index.html')
             parser = PageParser()
             parser.feed(page.read_text())
             if cid == 37:
@@ -234,7 +254,7 @@ class StaticParity(unittest.TestCase):
                     np.testing.assert_allclose(decode(source[method]), expected, rtol=0, atol=0)
                 continue
             row = self.df.loc[self.df.cid == cid].iloc[0]
-            folder = ROOT / 'dos_data' / row.material_name
+            folder = DOS / row.material_name
             nonsp = np.loadtxt(folder / 'nonsp_dost.dat')
             sp = np.loadtxt(folder / 'sp_dost.dat')
             actual_nonsp = next(data for data in sources if 'idos' in data)

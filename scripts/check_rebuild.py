@@ -8,8 +8,8 @@ import sys
 import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from build_static import build
-from site_data import ROOT
+from magnet_site.build import build
+from magnet_site.paths import ROOT, OUTPUT
 
 
 def canonical_document(doc):
@@ -36,7 +36,10 @@ def canonical_document(doc):
 
 
 def canonical_page(path):
-    html = path.read_text()
+    return canonical_html(path.read_text())
+
+
+def canonical_html(html):
     documents = []
     pattern = r'(<script type="application/json" id="ashby-data">)(.*?)(</script>)'
     match = re.search(pattern, html, re.S)
@@ -61,14 +64,17 @@ def canonical_page(path):
 
 
 def main():
-    manifest = json.loads((ROOT / 'generated-pages.json').read_text())
+    manifest = json.loads((OUTPUT / 'generated-pages.json').read_text())
     with tempfile.TemporaryDirectory(prefix='magnets-rebuild-') as temporary:
         output = Path(temporary)
         build(output)
         assert json.loads((output / 'generated-pages.json').read_text()) == manifest
         for name in manifest:
-            assert canonical_page(ROOT / name) == canonical_page(output / name), name
-    print('Rebuild matches all 170 pages (ignoring incidental Bokeh identifiers/order).')
+            if name.endswith('.html'):
+                assert canonical_page(OUTPUT / name) == canonical_page(output / name), name
+            else:
+                assert (OUTPUT / name).read_bytes() == (output / name).read_bytes(), name
+    print('Rebuild matches all 170 pages and copied assets (ignoring incidental Bokeh identifiers/order).')
 
 
 if __name__ == '__main__':

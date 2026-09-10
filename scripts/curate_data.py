@@ -3,11 +3,12 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
+LEGACY = ROOT / 'data' / 'legacy'
 
 
 def main():
-    original = pd.read_pickle(ROOT / 'clean_pickle3.df')
-    exported = pd.read_csv(ROOT / 'clean_df3.csv', index_col=0,
+    original = pd.read_pickle(LEGACY / 'clean_pickle3.df')
+    exported = pd.read_csv(LEGACY / 'clean_df3.csv', index_col=0,
                            float_precision='round_trip')
     pd.testing.assert_frame_equal(original, exported, check_exact=True)
     assert original.loc[original.cid == 7, 'material_name'].item() == 'MnNi2Ga'

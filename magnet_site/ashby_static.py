@@ -5,8 +5,8 @@ from bokeh.embed import json_item
 from bokeh.models import Circle, LinearColorMapper
 from bokeh.themes import Theme
 
-from ashby import main_plot
-import resources
+from .ashby import main_plot
+from . import resources
 
 DEFAULTS = ['Curie temperature (K)', 'volumetric moment (emu/cm³)',
             'largest local moment (µB)']

@@ -1,13 +1,15 @@
-"""Build the committed GitHub Pages site: uv run python build_static.py."""
+"""Build the self-contained GitHub Pages site: uv run python -m magnet_site."""
 import argparse
 import json
 import os
 import re
+import shutil
 from pathlib import Path
 from urllib.parse import urlencode
+from .paths import ROOT, WEB, OUTPUT
 
 # Avoid an unwritable global font cache in restricted environments.
-os.environ.setdefault('MPLCONFIGDIR', str(Path(__file__).resolve().parent / '.mpl-cache'))
+os.environ.setdefault('MPLCONFIGDIR', str(ROOT / '.cache' / 'matplotlib'))
 
 import pandas as pd
 from bokeh.embed import components
@@ -15,11 +17,11 @@ from bokeh.models import CustomJS, TapTool
 from bokeh.themes import Theme
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from ashby_static import DEFAULTS, make_payload
-from corr import plot_corr
-from dosplot import create_dosplot
-import resources
-from site_data import ROOT, counts, display_data, load_data, MISSING_DOS
+from .ashby_static import DEFAULTS, make_payload
+from .corr import plot_corr
+from .dosplot import create_dosplot
+from . import resources
+from .data import counts, display_data, load_data, MISSING_DOS
 
 
 def property_groups(row):
@@ -48,7 +50,7 @@ def safe_json(value):
     return json.dumps(value, ensure_ascii=False, separators=(',', ':'), allow_nan=False).replace('<', '\\u003c')
 
 
-def build(output=ROOT):
+def build(output=OUTPUT):
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=True)
     source = load_data()
@@ -56,7 +58,7 @@ def build(output=ROOT):
     # Repair links only in property-table output; retain original source strings
     # in plot data so scientific input and the original Bokeh documents agree.
     total, magnetocaloric = counts(source)
-    env = Environment(loader=FileSystemLoader(ROOT / 'templates'),
+    env = Environment(loader=FileSystemLoader(WEB / 'templates'),
                       autoescape=select_autoescape(['html']))
     generated = []
 
@@ -115,20 +117,35 @@ def build(output=ROOT):
                formula=row.formula_html, dos_columns_groups=property_groups(display_row),
                dos_unavailable=unavailable)
 
+    pages = len(generated)
+    # Publish a complete site folder. Only active public assets are copied;
+    # scientific inputs, legacy experiments and Python never enter the output.
+    for asset in sorted((WEB / 'static').rglob('*')):
+        if asset.is_file():
+            relative = 'static/' + asset.relative_to(WEB / 'static').as_posix()
+            destination = output / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            if not destination.exists() or destination.read_bytes() != asset.read_bytes():
+                shutil.copyfile(asset, destination)
+            generated.append(relative)
     write('.nojekyll', '')
     manifest = output / 'generated-pages.json'
     if manifest.exists():
         for stale in set(json.loads(manifest.read_text())) - set(generated):
-            # Only the exact former per-compound output is eligible for pruning.
-            import re
-            if re.fullmatch(r'c/\d+/index\.html', stale):
+            # Prune only builder-owned compound pages and copied static assets.
+            # Reject absolute paths and traversal even in an edited manifest.
+            relative = Path(stale)
+            asset = (relative.parts and relative.parts[0] == 'static'
+                     and '..' not in relative.parts and not relative.is_absolute())
+            if re.fullmatch(r'c/\d+/index\.html', stale) or asset:
                 (output / stale).unlink(missing_ok=True)
     manifest.write_text(json.dumps(sorted(generated), indent=2) + '\n')
-    print(f'Built {len(generated) - 1} HTML pages: {total} compounds, {magnetocaloric} magnetocalorics.')
+    print(f'Built {pages} HTML pages in {output}: {total} compounds, {magnetocaloric} magnetocalorics.')
 
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, default=ROOT)
+    parser.add_argument('--output', type=Path, default=OUTPUT,
+                        help='Self-contained output directory (default: docs/)')
     args = parser.parse_args()
     build(args.output)

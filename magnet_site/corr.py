@@ -44,10 +44,10 @@ corr_style = {'attrs': {
 
 
 def test():
-   import pandas as pd
+   from .data import load_data
+   from .resources import corr_cols
    from bokeh.plotting import show
-   df = pd.read_pickle("clean_pickle3.df")
-   p = plot_corr(df)
+   p = plot_corr(load_data()[corr_cols])
    show(p)
 
 def plot_corr(df, cmap_name="RdBu", method="pearson", ashby_url='/?x_axis=@x&y_axis=@y&color_axis=@y'):

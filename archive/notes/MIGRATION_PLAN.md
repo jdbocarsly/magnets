@@ -1,5 +1,12 @@
 # Static migration with exact visual and functional parity
 
+> Layout update: generated output now lives in `docs/`, with complete copied
+> static assets. GitHub Pages should publish `master` → `/docs`. Active Python
+> code is in `magnet_site/`, active templates/assets in `web/`, DOS inputs in
+> `data/dos/`, historical exports in `data/legacy/`, and misc scripts in
+> `scripts/legacy/`. Build with `uv run --locked python -m magnet_site`.
+> The original plan below is retained as historical context.
+
 ## Summary
 
 Reproduce the existing templates, CSS, fonts, Bootstrap, DataTables, and Bokeh

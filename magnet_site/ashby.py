@@ -1,4 +1,4 @@
-import resources
+from . import resources
 from bokeh.models import (ColorBar, HoverTool, LinearColorMapper, OpenURL,
                           TapTool)
 from bokeh.palettes import brewer

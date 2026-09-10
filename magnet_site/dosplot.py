@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from os.path import join as j
-from pathlib import Path
+from .paths import DOS
 
 import pandas as pd
 from bokeh.models import CrosshairTool
@@ -21,7 +21,7 @@ from numpy import arange
 TOOLS = "box_zoom, pan, crosshair,undo, redo, save, reset"
 
 def create_dosplot(compound, atoms_per_unit_cell):
-   path = j(Path(__file__).resolve().parent, "dos_data", compound)
+   path = j(DOS, compound)
    df1 = pd.read_csv(j(path,"nonsp_dost.dat"), names=["energy", "dos","idos"], sep="\s+")
    df1["type"] = "nonsp"
    df2 = pd.read_csv(j(path,"sp_dost.dat"), names=["energy", "udos","ddos"], sep="\s+")

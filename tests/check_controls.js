@@ -3,7 +3,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-const html = fs.readFileSync(new URL('../index.html', `file://${__filename}`), 'utf8');
+const html = fs.readFileSync(new URL('../docs/index.html', `file://${__filename}`), 'utf8');
 const payload = JSON.parse(html.match(/id="ashby-data">(.*?)<\/script>/s)[1]);
 const listeners = {};
 const nodes = {};
@@ -30,7 +30,7 @@ const context = {Bokeh, console, URLSearchParams, location,
   document: {readyState: 'loading', getElementById: id => nodes[id],
     addEventListener(event, callback) { listeners[event] = callback; }}};
 context.window = context;
-vm.runInNewContext(fs.readFileSync(new URL('../static/ashby.js', `file://${__filename}`), 'utf8'), context);
+vm.runInNewContext(fs.readFileSync(new URL('../docs/static/ashby.js', `file://${__filename}`), 'utf8'), context);
 const flush = () => new Promise(resolve => setImmediate(resolve));
 function axes() {
   return visits.at(-1).doc.roots.references.filter(ref => ref.type.endsWith('Axis'))

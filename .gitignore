@@ -1,14 +1,17 @@
+# Environments and caches
 venv/
 .venv/
 .uv-cache/
-.mpl-cache/
-all_data/
+.cache/
+__pycache__/
 *.py[cod]
+
+# Local research archive, raw calculations and old logs (not site content)
+/archive/local/
+
+# Editor / operating-system files
+.DS_Store
 .DS_store
-gunicorn_log_22Aug17_16Aug17
-gunicorn_stdout_log.txt
-unicorn_stdout_log.txt
-flaskproxy.sublime-workspace
-flaskproxy.sublime-project
-stuff/*
+*.sublime-workspace
+*.sublime-project
 *~
