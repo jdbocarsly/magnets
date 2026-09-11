@@ -1,0 +1,2429 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UCSB Magnet database</title>
+
+<link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:Regular,Semi-bold,RegularItalic|Roboto+Slab:Regular|Lato:Regular,bold">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/engr_styles.css" type="text/css">
+<link rel="stylesheet" href="../static/navbar.css" type="text/css">
+<!-- <link
+    href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.6.min.css"
+    rel="stylesheet" type="text/css"> -->
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js">
+</script>
+
+
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="../"><b>UCSB Magnet database</b></a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      
+        <li>
+        <a href="../ashby/">Ashby plot</a></li>
+      
+        <li>
+        <a href="../correlations/">Correlations</a></li>
+      
+        <li class="active">
+        <a href="../datatable/">Data Table</a></li>
+      
+        <li>
+        <a href="../about/">About</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+
+<table id="datatable" class="table table-hover" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+              <th rowspan="2">formula</th>
+              <th rowspan="2">id</th>
+              <th rowspan="2">formula</th>
+              <th rowspan="2">material class</th>
+              <th rowspan="2"><i>T</i><sub>C</sub> (K) </th>
+              <th colspan="2">Δ<i>S</i><sub>M</sub> (J kg<sup>&minus;1</sup>K<sup>&minus;1</sup>)</th>
+              <th rowspan="2">moment (emu/g)</th>
+              <th colspan="2">largest local moment</th>
+            </tr>
+            <tr>
+
+                <th><i>H</i> = 2 T</th>
+                <th><i>H</i> = 5 T</th>
+
+                <th>element</th>
+                <th>µ (µ<sub>B</sub>/atom)</th>
+            </tr>
+        </thead>
+
+  <tbody>
+  
+      <tr>
+        <td>MnFe2Si</td>
+        <td>0</td>
+        <td>MnFe₂Si</td>
+        <td>heusler</td>
+        <td>250.0</td>
+        <td>1.7</td>
+        <td>0.7</td>
+        <td>86.1</td>
+        <td>Mn</td>
+        <td>2.54</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnNi2Ga</td>
+        <td>1</td>
+        <td>MnNi₂Ga</td>
+        <td>heusler</td>
+        <td>329.0</td>
+        <td>1.5</td>
+        <td></td>
+        <td>93.7</td>
+        <td>Mn</td>
+        <td>3.38</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCoP</td>
+        <td>2</td>
+        <td>MnCoP</td>
+        <td>Ni2In-TiNiSi</td>
+        <td>583.0</td>
+        <td>3.1</td>
+        <td>6.0</td>
+        <td>114.9</td>
+        <td>Mn</td>
+        <td>2.74</td>
+
+      </tr>
+      
+      <tr>
+        <td>FeB</td>
+        <td>3</td>
+        <td>FeB</td>
+        <td>boride</td>
+        <td>573.0</td>
+        <td>1.7</td>
+        <td>3.2</td>
+        <td>96.6</td>
+        <td>Fe</td>
+        <td>1.26</td>
+
+      </tr>
+      
+      <tr>
+        <td>Ni</td>
+        <td>4</td>
+        <td>Ni</td>
+        <td>close packed</td>
+        <td>627.0</td>
+        <td>1.4</td>
+        <td>2.5</td>
+        <td>55.6</td>
+        <td>Ni</td>
+        <td>0.62</td>
+
+      </tr>
+      
+      <tr>
+        <td>Y2Fe17</td>
+        <td>5</td>
+        <td>Y₂Fe₁₇</td>
+        <td>close packed</td>
+        <td>300.0</td>
+        <td>2.5</td>
+        <td>4.8</td>
+        <td>187.3</td>
+        <td>Fe</td>
+        <td>2.61</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnFeP0.667As0.333</td>
+        <td>6</td>
+        <td>MnFeP₀.₆₆₇As₀.₃₃₃</td>
+        <td>Fe2P</td>
+        <td>225.0</td>
+        <td>11.0</td>
+        <td>16.0</td>
+        <td>146.0</td>
+        <td>Mn</td>
+        <td>3.0</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3GeTe2</td>
+        <td>8</td>
+        <td>Fe₃GeTe₂</td>
+        <td>layered</td>
+        <td>225.0</td>
+        <td></td>
+        <td>1.1</td>
+        <td>70.8</td>
+        <td>Fe</td>
+        <td>2.45</td>
+
+      </tr>
+      
+      <tr>
+        <td>FeRu2Sn</td>
+        <td>9</td>
+        <td>FeRu₂Sn</td>
+        <td>heusler</td>
+        <td>545.0</td>
+        <td>0.29</td>
+        <td>0.57</td>
+        <td>61.7</td>
+        <td>Fe</td>
+        <td>3.14</td>
+
+      </tr>
+      
+      <tr>
+        <td>Mn3GaC</td>
+        <td>10</td>
+        <td>Mn₃GaC</td>
+        <td>antiperovskite</td>
+        <td>250.0</td>
+        <td>2.5</td>
+        <td>4.5</td>
+        <td>95.0</td>
+        <td>Mn</td>
+        <td>1.79</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnP</td>
+        <td>11</td>
+        <td>MnP</td>
+        <td>NiAs</td>
+        <td>290.0</td>
+        <td>1.8</td>
+        <td>3.8</td>
+        <td>46.9</td>
+        <td>Mn</td>
+        <td>0.8</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnFeGe0.333P0.333Si0.333</td>
+        <td>12</td>
+        <td>MnFeGe₀.₃₃₃P₀.₃₃₃Si₀.₃₃₃</td>
+        <td>Fe2P</td>
+        <td>275.0</td>
+        <td>14.0</td>
+        <td>35.0</td>
+        <td>154.7</td>
+        <td>Mn</td>
+        <td>2.88</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrO2</td>
+        <td>13</td>
+        <td>CrO₂</td>
+        <td>oxide</td>
+        <td>396.0</td>
+        <td>6.8</td>
+        <td></td>
+        <td>133.0</td>
+        <td>Cr</td>
+        <td>2.13</td>
+
+      </tr>
+      
+      <tr>
+        <td>La2MnNiO6</td>
+        <td>14</td>
+        <td>La₂MnNiO₆</td>
+        <td>oxide</td>
+        <td>280.0</td>
+        <td>1.0</td>
+        <td>2.1</td>
+        <td>57.2</td>
+        <td>Mn</td>
+        <td>2.96</td>
+
+      </tr>
+      
+      <tr>
+        <td>SrRuO3</td>
+        <td>15</td>
+        <td>SrRuO₃</td>
+        <td>oxide</td>
+        <td>160.0</td>
+        <td>0.6</td>
+        <td>2.0</td>
+        <td>47.3</td>
+        <td>Ru</td>
+        <td>1.41</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnB</td>
+        <td>16</td>
+        <td>MnB</td>
+        <td>boride</td>
+        <td>571.0</td>
+        <td>5.1</td>
+        <td>9.4</td>
+        <td>155.1</td>
+        <td>Mn</td>
+        <td>1.93</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnNiSb</td>
+        <td>17</td>
+        <td>MnNiSb</td>
+        <td>half heusler</td>
+        <td>765.0</td>
+        <td>1.5</td>
+        <td>3.0</td>
+        <td>94.9</td>
+        <td>Mn</td>
+        <td>3.68</td>
+
+      </tr>
+      
+      <tr>
+        <td>AlFe2B2</td>
+        <td>18</td>
+        <td>AlFe₂B₂</td>
+        <td>layered</td>
+        <td>275.0</td>
+        <td>4.5</td>
+        <td>7.5</td>
+        <td>92.3</td>
+        <td>Fe</td>
+        <td>1.37</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe2P</td>
+        <td>19</td>
+        <td>Fe₂P</td>
+        <td>Fe2P</td>
+        <td>223.0</td>
+        <td>1.5</td>
+        <td>2.9</td>
+        <td>116.7</td>
+        <td>Fe</td>
+        <td>2.27</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3C</td>
+        <td>20</td>
+        <td>Fe₃C</td>
+        <td>intercalation</td>
+        <td>475.0</td>
+        <td>3.1</td>
+        <td></td>
+        <td>170.2</td>
+        <td>Fe</td>
+        <td>1.93</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe5Si3</td>
+        <td>21</td>
+        <td>Fe₅Si₃</td>
+        <td>Mn5Si3</td>
+        <td>373.0</td>
+        <td>1.0</td>
+        <td>2.8</td>
+        <td>111.7</td>
+        <td>Fe</td>
+        <td>1.78</td>
+
+      </tr>
+      
+      <tr>
+        <td>LaMnO3</td>
+        <td>22</td>
+        <td>LaMnO₃</td>
+        <td>oxide</td>
+        <td>300.0</td>
+        <td>3.0</td>
+        <td>7.0</td>
+        <td>71.2</td>
+        <td>Mn</td>
+        <td>2.9</td>
+
+      </tr>
+      
+      <tr>
+        <td>Mn5Ge3</td>
+        <td>23</td>
+        <td>Mn₅Ge₃</td>
+        <td>Mn5Si3</td>
+        <td>300.0</td>
+        <td>3.8</td>
+        <td>9.4</td>
+        <td>152.5</td>
+        <td>Mn</td>
+        <td>3.12</td>
+
+      </tr>
+      
+      <tr>
+        <td>Mn5PB2</td>
+        <td>24</td>
+        <td>Mn₅PB₂</td>
+        <td>boride</td>
+        <td>302.0</td>
+        <td>2.6</td>
+        <td>5.0</td>
+        <td>138.0</td>
+        <td>Mn</td>
+        <td>1.74</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnAs</td>
+        <td>25</td>
+        <td>MnAs</td>
+        <td>NiAs</td>
+        <td>318.0</td>
+        <td>20.0</td>
+        <td>30.0</td>
+        <td>121.5</td>
+        <td>Mn</td>
+        <td>2.91</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCoGe</td>
+        <td>26</td>
+        <td>MnCoGe</td>
+        <td>Ni2In-TiNiSi</td>
+        <td>235.0</td>
+        <td>3.0</td>
+        <td>6.0</td>
+        <td>90.7</td>
+        <td>Mn</td>
+        <td>2.69</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnFeGe</td>
+        <td>27</td>
+        <td>MnFeGe</td>
+        <td>Ni2In-TiNiSi</td>
+        <td>235.0</td>
+        <td>0.75</td>
+        <td>1.6</td>
+        <td>83.8</td>
+        <td>Mn</td>
+        <td>2.43</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnFeP0.667Si0.333</td>
+        <td>28</td>
+        <td>MnFeP₀.₆₆₇Si₀.₃₃₃</td>
+        <td>Fe2P</td>
+        <td>250.0</td>
+        <td>16.0</td>
+        <td></td>
+        <td>171.1</td>
+        <td>Mn</td>
+        <td>2.93</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnNi2Sn</td>
+        <td>29</td>
+        <td>MnNi₂Sn</td>
+        <td>heusler</td>
+        <td>350.0</td>
+        <td>1.15</td>
+        <td>2.1</td>
+        <td>80.0</td>
+        <td>Mn</td>
+        <td>3.6</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnSi</td>
+        <td>30</td>
+        <td>MnSi</td>
+        <td>B20</td>
+        <td>31.0</td>
+        <td>2.2</td>
+        <td>3.55</td>
+        <td>66.9</td>
+        <td>Mn</td>
+        <td>1.07</td>
+
+      </tr>
+      
+      <tr>
+        <td>Mn3Sn2</td>
+        <td>31</td>
+        <td>Mn₃Sn₂</td>
+        <td>NiAs</td>
+        <td>280.0</td>
+        <td>1.9</td>
+        <td>3.5</td>
+        <td>107.3</td>
+        <td>Mn</td>
+        <td>2.77</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnFeP0.333As0.667</td>
+        <td>32</td>
+        <td>MnFeP₀.₃₃₃As₀.₆₆₇</td>
+        <td>Fe2P</td>
+        <td>325.0</td>
+        <td>12.0</td>
+        <td>33.0</td>
+        <td>141.7</td>
+        <td>Mn</td>
+        <td>2.96</td>
+
+      </tr>
+      
+      <tr>
+        <td>Mn3AlC</td>
+        <td>33</td>
+        <td>Mn₃AlC</td>
+        <td>antiperovskite</td>
+        <td>288.0</td>
+        <td>1.6</td>
+        <td>3.5</td>
+        <td>107.0</td>
+        <td>Mn</td>
+        <td>1.64</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnSb</td>
+        <td>34</td>
+        <td>MnSb</td>
+        <td>NiAs</td>
+        <td>600.0</td>
+        <td></td>
+        <td></td>
+        <td>73.0</td>
+        <td>Mn</td>
+        <td>2.4</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe23Y6</td>
+        <td>35</td>
+        <td>Fe₂₃Y₆</td>
+        <td>other</td>
+        <td>485.0</td>
+        <td></td>
+        <td></td>
+        <td>152.8</td>
+        <td>Fe</td>
+        <td>2.52</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3Y</td>
+        <td>36</td>
+        <td>Fe₃Y</td>
+        <td>other</td>
+        <td>549.0</td>
+        <td></td>
+        <td></td>
+        <td>82.4</td>
+        <td>Fe</td>
+        <td>2.14</td>
+
+      </tr>
+      
+      <tr>
+        <td>Co5Y</td>
+        <td>37</td>
+        <td>Co₅Y</td>
+        <td>other</td>
+        <td>921.0</td>
+        <td></td>
+        <td></td>
+        <td>105.2</td>
+        <td>Co</td>
+        <td>1.56</td>
+
+      </tr>
+      
+      <tr>
+        <td>Co7La2</td>
+        <td>38</td>
+        <td>Co₇La₂</td>
+        <td>other</td>
+        <td>490.0</td>
+        <td></td>
+        <td></td>
+        <td>2.2</td>
+        <td>Co</td>
+        <td>0.44</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe2Y</td>
+        <td>39</td>
+        <td>Fe₂Y</td>
+        <td>laves</td>
+        <td>550.0</td>
+        <td></td>
+        <td></td>
+        <td>86.0</td>
+        <td>Fe</td>
+        <td>1.99</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3P</td>
+        <td>40</td>
+        <td>Fe₃P</td>
+        <td>close packed</td>
+        <td>716.0</td>
+        <td></td>
+        <td></td>
+        <td>157.3</td>
+        <td>Fe</td>
+        <td>2.22</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3N</td>
+        <td>41</td>
+        <td>Fe₃N</td>
+        <td>close packed</td>
+        <td>550.0</td>
+        <td></td>
+        <td></td>
+        <td>187.8</td>
+        <td>Fe</td>
+        <td>2.13</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe2CoN</td>
+        <td>42</td>
+        <td>Fe₂CoN</td>
+        <td>close packed</td>
+        <td>488.0</td>
+        <td></td>
+        <td></td>
+        <td>155.4</td>
+        <td>Fe</td>
+        <td>2.18</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe2NiN</td>
+        <td>43</td>
+        <td>Fe₂NiN</td>
+        <td>close packed</td>
+        <td>234.0</td>
+        <td></td>
+        <td></td>
+        <td>126.3</td>
+        <td>Fe</td>
+        <td>2.07</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3Ge</td>
+        <td>44</td>
+        <td>Fe₃Ge</td>
+        <td>close packed</td>
+        <td>640.0</td>
+        <td></td>
+        <td></td>
+        <td>147.8</td>
+        <td>Fe</td>
+        <td>2.2</td>
+
+      </tr>
+      
+      <tr>
+        <td>Co2B</td>
+        <td>45</td>
+        <td>Co₂B</td>
+        <td>boride</td>
+        <td>429.0</td>
+        <td></td>
+        <td></td>
+        <td>83.1</td>
+        <td>Co</td>
+        <td>1.04</td>
+
+      </tr>
+      
+      <tr>
+        <td>Co3B</td>
+        <td>46</td>
+        <td>Co₃B</td>
+        <td>boride</td>
+        <td>747.0</td>
+        <td></td>
+        <td></td>
+        <td>105.6</td>
+        <td>Co</td>
+        <td>1.25</td>
+
+      </tr>
+      
+      <tr>
+        <td>CoS2</td>
+        <td>47</td>
+        <td>CoS₂</td>
+        <td>pyrite</td>
+        <td>130.0</td>
+        <td></td>
+        <td></td>
+        <td>45.2</td>
+        <td>Co</td>
+        <td>0.91</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrNb3S6</td>
+        <td>48</td>
+        <td>CrNb₃S₆</td>
+        <td>layered</td>
+        <td>160.0</td>
+        <td></td>
+        <td></td>
+        <td>32.1</td>
+        <td>Cr</td>
+        <td>2.84</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrTa3S6</td>
+        <td>49</td>
+        <td>CrTa₃S₆</td>
+        <td>layered</td>
+        <td>170.0</td>
+        <td></td>
+        <td></td>
+        <td>21.7</td>
+        <td>Cr</td>
+        <td>2.68</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnNb3S6</td>
+        <td>50</td>
+        <td>MnNb₃S₆</td>
+        <td>layered</td>
+        <td>48.0</td>
+        <td></td>
+        <td></td>
+        <td>45.0</td>
+        <td>Mn</td>
+        <td>3.87</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnTa3S6</td>
+        <td>51</td>
+        <td>MnTa₃S₆</td>
+        <td>layered</td>
+        <td>80.0</td>
+        <td></td>
+        <td></td>
+        <td>12.6</td>
+        <td>Mn</td>
+        <td>1.76</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrNb3Se6</td>
+        <td>52</td>
+        <td>CrNb₃Se₆</td>
+        <td>layered</td>
+        <td>105.0</td>
+        <td></td>
+        <td></td>
+        <td>21.1</td>
+        <td>Cr</td>
+        <td>3.0</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrTa3Se6</td>
+        <td>53</td>
+        <td>CrTa₃Se₆</td>
+        <td>layered</td>
+        <td>120.0</td>
+        <td></td>
+        <td></td>
+        <td>16.0</td>
+        <td>Cr</td>
+        <td>3.08</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnNb4S8</td>
+        <td>54</td>
+        <td>MnNb₄S₈</td>
+        <td>layered</td>
+        <td>100.0</td>
+        <td></td>
+        <td></td>
+        <td>29.7</td>
+        <td>Mn</td>
+        <td>3.72</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnTa4S8</td>
+        <td>55</td>
+        <td>MnTa₄S₈</td>
+        <td>layered</td>
+        <td>75.0</td>
+        <td></td>
+        <td></td>
+        <td>21.7</td>
+        <td>Mn</td>
+        <td>3.88</td>
+
+      </tr>
+      
+      <tr>
+        <td>Cr2Te3</td>
+        <td>56</td>
+        <td>Cr₂Te₃</td>
+        <td>Ni2In-TiNiSi</td>
+        <td>180.0</td>
+        <td></td>
+        <td></td>
+        <td>69.3</td>
+        <td>Cr</td>
+        <td>3.19</td>
+
+      </tr>
+      
+      <tr>
+        <td>Cr3Te4</td>
+        <td>57</td>
+        <td>Cr₃Te₄</td>
+        <td>Ni2In-TiNiSi</td>
+        <td>317.0</td>
+        <td></td>
+        <td></td>
+        <td>83.7</td>
+        <td>Cr</td>
+        <td>3.4</td>
+
+      </tr>
+      
+      <tr>
+        <td>CuCr2Se4</td>
+        <td>58</td>
+        <td>CuCr₂Se₄</td>
+        <td>spinel</td>
+        <td>430.0</td>
+        <td></td>
+        <td></td>
+        <td>59.3</td>
+        <td>Cr</td>
+        <td>2.86</td>
+
+      </tr>
+      
+      <tr>
+        <td>CuCr2S4</td>
+        <td>59</td>
+        <td>CuCr₂S₄</td>
+        <td>spinel</td>
+        <td>375.0</td>
+        <td></td>
+        <td></td>
+        <td>94.9</td>
+        <td>Cr</td>
+        <td>2.74</td>
+
+      </tr>
+      
+      <tr>
+        <td>CuCr2Te4</td>
+        <td>60</td>
+        <td>CuCr₂Te₄</td>
+        <td>spinel</td>
+        <td>329.0</td>
+        <td></td>
+        <td></td>
+        <td>44.3</td>
+        <td>Cr</td>
+        <td>2.96</td>
+
+      </tr>
+      
+      <tr>
+        <td>Ba2MnReO6</td>
+        <td>61</td>
+        <td>Ba₂MnReO₆</td>
+        <td>oxide</td>
+        <td>110.0</td>
+        <td></td>
+        <td></td>
+        <td>35.8</td>
+        <td>Mn</td>
+        <td>4.26</td>
+
+      </tr>
+      
+      <tr>
+        <td>Ba2FeMoO6</td>
+        <td>62</td>
+        <td>Ba₂FeMoO₆</td>
+        <td>oxide</td>
+        <td>308.0</td>
+        <td></td>
+        <td></td>
+        <td>42.8</td>
+        <td>Fe</td>
+        <td>3.73</td>
+
+      </tr>
+      
+      <tr>
+        <td>Ba2FeReO6</td>
+        <td>63</td>
+        <td>Ba₂FeReO₆</td>
+        <td>oxide</td>
+        <td>303.0</td>
+        <td></td>
+        <td></td>
+        <td>27.3</td>
+        <td>Fe</td>
+        <td>3.67</td>
+
+      </tr>
+      
+      <tr>
+        <td>Sr2CrMoO6</td>
+        <td>64</td>
+        <td>Sr₂CrMoO₆</td>
+        <td>oxide</td>
+        <td>420.0</td>
+        <td></td>
+        <td></td>
+        <td>26.7</td>
+        <td>Cr</td>
+        <td>2.33</td>
+
+      </tr>
+      
+      <tr>
+        <td>Sr2FeMoO6</td>
+        <td>65</td>
+        <td>Sr₂FeMoO₆</td>
+        <td>oxide</td>
+        <td>420.0</td>
+        <td></td>
+        <td></td>
+        <td>7.3</td>
+        <td>Fe</td>
+        <td>0.71</td>
+
+      </tr>
+      
+      <tr>
+        <td>Sr2CrReO6</td>
+        <td>66</td>
+        <td>Sr₂CrReO₆</td>
+        <td>oxide</td>
+        <td>620.0</td>
+        <td></td>
+        <td></td>
+        <td>10.8</td>
+        <td>Cr</td>
+        <td>2.32</td>
+
+      </tr>
+      
+      <tr>
+        <td>Sr2CrWO6</td>
+        <td>67</td>
+        <td>Sr₂CrWO₆</td>
+        <td>oxide</td>
+        <td>458.0</td>
+        <td></td>
+        <td></td>
+        <td>22.0</td>
+        <td>Cr</td>
+        <td>2.29</td>
+
+      </tr>
+      
+      <tr>
+        <td>Sr2FeReO6</td>
+        <td>68</td>
+        <td>Sr₂FeReO₆</td>
+        <td>oxide</td>
+        <td>400.0</td>
+        <td></td>
+        <td></td>
+        <td>32.7</td>
+        <td>Fe</td>
+        <td>3.71</td>
+
+      </tr>
+      
+      <tr>
+        <td>La2MnCoO6</td>
+        <td>69</td>
+        <td>La₂MnCoO₆</td>
+        <td>oxide</td>
+        <td>230.0</td>
+        <td></td>
+        <td></td>
+        <td>68.7</td>
+        <td>Mn</td>
+        <td>2.9</td>
+
+      </tr>
+      
+      <tr>
+        <td>CdCr2S4</td>
+        <td>70</td>
+        <td>CdCr₂S₄</td>
+        <td>spinel</td>
+        <td>86.0</td>
+        <td></td>
+        <td></td>
+        <td>97.2</td>
+        <td>Cr</td>
+        <td>2.94</td>
+
+      </tr>
+      
+      <tr>
+        <td>CdCr2Se4</td>
+        <td>71</td>
+        <td>CdCr₂Se₄</td>
+        <td>spinel</td>
+        <td>130.0</td>
+        <td></td>
+        <td></td>
+        <td>63.0</td>
+        <td>Cr</td>
+        <td>3.02</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnB2</td>
+        <td>72</td>
+        <td>MnB₂</td>
+        <td>boride</td>
+        <td>157.0</td>
+        <td></td>
+        <td></td>
+        <td>133.3</td>
+        <td>Mn</td>
+        <td>1.84</td>
+
+      </tr>
+      
+      <tr>
+        <td>ZrFe2</td>
+        <td>73</td>
+        <td>ZrFe₂</td>
+        <td>laves</td>
+        <td>633.0</td>
+        <td></td>
+        <td></td>
+        <td>83.7</td>
+        <td>Fe</td>
+        <td>1.96</td>
+
+      </tr>
+      
+      <tr>
+        <td>ScFe2</td>
+        <td>74</td>
+        <td>ScFe₂</td>
+        <td>laves</td>
+        <td>545.0</td>
+        <td></td>
+        <td></td>
+        <td>94.2</td>
+        <td>Fe</td>
+        <td>1.79</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnGe4</td>
+        <td>75</td>
+        <td>MnGe₄</td>
+        <td>other</td>
+        <td>340.0</td>
+        <td></td>
+        <td></td>
+        <td>25.2</td>
+        <td>Mn</td>
+        <td>1.78</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnGa2Sb2</td>
+        <td>76</td>
+        <td>MnGa₂Sb₂</td>
+        <td>other</td>
+        <td>310.0</td>
+        <td></td>
+        <td></td>
+        <td>34.7</td>
+        <td>Mn</td>
+        <td>2.87</td>
+
+      </tr>
+      
+      <tr>
+        <td>Ni3Pt</td>
+        <td>77</td>
+        <td>Ni₃Pt</td>
+        <td>close packed</td>
+        <td>450.0</td>
+        <td></td>
+        <td></td>
+        <td>34.8</td>
+        <td>Ni</td>
+        <td>0.76</td>
+
+      </tr>
+      
+      <tr>
+        <td>NiPt</td>
+        <td>78</td>
+        <td>NiPt</td>
+        <td>close packed</td>
+        <td>200.0</td>
+        <td></td>
+        <td></td>
+        <td>23.4</td>
+        <td>Ni</td>
+        <td>0.74</td>
+
+      </tr>
+      
+      <tr>
+        <td>CoPt</td>
+        <td>79</td>
+        <td>CoPt</td>
+        <td>close packed</td>
+        <td>840.0</td>
+        <td></td>
+        <td></td>
+        <td>49.0</td>
+        <td>Co</td>
+        <td>1.87</td>
+
+      </tr>
+      
+      <tr>
+        <td>CoPt3</td>
+        <td>80</td>
+        <td>CoPt₃</td>
+        <td>close packed</td>
+        <td>400.0</td>
+        <td></td>
+        <td></td>
+        <td>25.2</td>
+        <td>Co</td>
+        <td>1.98</td>
+
+      </tr>
+      
+      <tr>
+        <td>FePd</td>
+        <td>81</td>
+        <td>FePd</td>
+        <td>close packed</td>
+        <td>760.0</td>
+        <td></td>
+        <td></td>
+        <td>110.2</td>
+        <td>Fe</td>
+        <td>2.88</td>
+
+      </tr>
+      
+      <tr>
+        <td>FePt</td>
+        <td>82</td>
+        <td>FePt</td>
+        <td>close packed</td>
+        <td>750.0</td>
+        <td></td>
+        <td></td>
+        <td>72.1</td>
+        <td>Fe</td>
+        <td>2.93</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnAl</td>
+        <td>83</td>
+        <td>MnAl</td>
+        <td>close packed</td>
+        <td>650.0</td>
+        <td></td>
+        <td></td>
+        <td>129.8</td>
+        <td>Mn</td>
+        <td>1.91</td>
+
+      </tr>
+      
+      <tr>
+        <td>Ni3Mn</td>
+        <td>84</td>
+        <td>Ni₃Mn</td>
+        <td>close packed</td>
+        <td>750.0</td>
+        <td></td>
+        <td></td>
+        <td>119.4</td>
+        <td>Mn</td>
+        <td>3.23</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3Pt</td>
+        <td>85</td>
+        <td>Fe₃Pt</td>
+        <td>close packed</td>
+        <td>462.0</td>
+        <td></td>
+        <td></td>
+        <td>127.8</td>
+        <td>Fe</td>
+        <td>2.76</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3Pd</td>
+        <td>86</td>
+        <td>Fe₃Pd</td>
+        <td>close packed</td>
+        <td>575.0</td>
+        <td></td>
+        <td></td>
+        <td>168.8</td>
+        <td>Fe</td>
+        <td>2.78</td>
+
+      </tr>
+      
+      <tr>
+        <td>FePd3</td>
+        <td>87</td>
+        <td>FePd₃</td>
+        <td>close packed</td>
+        <td>543.0</td>
+        <td></td>
+        <td></td>
+        <td>63.5</td>
+        <td>Fe</td>
+        <td>3.3</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe4N</td>
+        <td>88</td>
+        <td>Fe₄N</td>
+        <td>antiperovskite</td>
+        <td>769.0</td>
+        <td></td>
+        <td></td>
+        <td>232.0</td>
+        <td>Fe</td>
+        <td>2.98</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe16N2</td>
+        <td>89</td>
+        <td>Fe₁₆N₂</td>
+        <td>close packed</td>
+        <td>810.0</td>
+        <td></td>
+        <td></td>
+        <td>213.4</td>
+        <td>Fe</td>
+        <td>2.79</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnBi</td>
+        <td>90</td>
+        <td>MnBi</td>
+        <td>NiAs</td>
+        <td>633.0</td>
+        <td></td>
+        <td></td>
+        <td>60.4</td>
+        <td>Mn</td>
+        <td>2.91</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe5SiB2</td>
+        <td>91</td>
+        <td>Fe₅SiB₂</td>
+        <td>boride</td>
+        <td>784.0</td>
+        <td></td>
+        <td></td>
+        <td>147.2</td>
+        <td>Fe</td>
+        <td>2.13</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe5PB2</td>
+        <td>92</td>
+        <td>Fe₅PB₂</td>
+        <td>boride</td>
+        <td>640.0</td>
+        <td></td>
+        <td></td>
+        <td>143.1</td>
+        <td>Fe</td>
+        <td>2.05</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe4CoPB2</td>
+        <td>93</td>
+        <td>Fe₄CoPB₂</td>
+        <td>boride</td>
+        <td>515.0</td>
+        <td></td>
+        <td></td>
+        <td>108.6</td>
+        <td>Fe</td>
+        <td>1.57</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe4MnPB2</td>
+        <td>94</td>
+        <td>Fe₄MnPB₂</td>
+        <td>boride</td>
+        <td>650.0</td>
+        <td></td>
+        <td></td>
+        <td>140.7</td>
+        <td>Mn</td>
+        <td>2.15</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe4CoSiB2</td>
+        <td>95</td>
+        <td>Fe₄CoSiB₂</td>
+        <td>boride</td>
+        <td>675.0</td>
+        <td></td>
+        <td></td>
+        <td>117.9</td>
+        <td>Fe</td>
+        <td>1.65</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe4MnSiB2</td>
+        <td>96</td>
+        <td>Fe₄MnSiB₂</td>
+        <td>boride</td>
+        <td>770.0</td>
+        <td></td>
+        <td></td>
+        <td>141.5</td>
+        <td>Mn</td>
+        <td>2.14</td>
+
+      </tr>
+      
+      <tr>
+        <td>Mn5SiB2</td>
+        <td>97</td>
+        <td>Mn₅SiB₂</td>
+        <td>boride</td>
+        <td>628.0</td>
+        <td></td>
+        <td></td>
+        <td>131.5</td>
+        <td>Mn</td>
+        <td>1.69</td>
+
+      </tr>
+      
+      <tr>
+        <td>BaRuO3</td>
+        <td>98</td>
+        <td>BaRuO₃</td>
+        <td>oxide</td>
+        <td>60.0</td>
+        <td></td>
+        <td></td>
+        <td>43.3</td>
+        <td>Ru</td>
+        <td>1.53</td>
+
+      </tr>
+      
+      <tr>
+        <td>Sr3Ru2O7</td>
+        <td>99</td>
+        <td>Sr₃Ru₂O₇</td>
+        <td>oxide</td>
+        <td>104.0</td>
+        <td></td>
+        <td></td>
+        <td>39.7</td>
+        <td>Ru</td>
+        <td>1.41</td>
+
+      </tr>
+      
+      <tr>
+        <td>Mn3InC</td>
+        <td>100</td>
+        <td>Mn₃InC</td>
+        <td>antiperovskite</td>
+        <td>272.0</td>
+        <td></td>
+        <td></td>
+        <td>116.0</td>
+        <td>Mn</td>
+        <td>2.52</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3GaC</td>
+        <td>101</td>
+        <td>Fe₃GaC</td>
+        <td>antiperovskite</td>
+        <td>510.0</td>
+        <td></td>
+        <td></td>
+        <td>70.1</td>
+        <td>Fe</td>
+        <td>1.25</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3ZnC</td>
+        <td>102</td>
+        <td>Fe₃ZnC</td>
+        <td>antiperovskite</td>
+        <td>368.0</td>
+        <td></td>
+        <td></td>
+        <td>93.8</td>
+        <td>Fe</td>
+        <td>1.68</td>
+
+      </tr>
+      
+      <tr>
+        <td>Mn3ZnC</td>
+        <td>103</td>
+        <td>Mn₃ZnC</td>
+        <td>antiperovskite</td>
+        <td>353.0</td>
+        <td></td>
+        <td></td>
+        <td>161.7</td>
+        <td>Mn</td>
+        <td>2.74</td>
+
+      </tr>
+      
+      <tr>
+        <td>Mn3GeC</td>
+        <td>104</td>
+        <td>Mn₃GeC</td>
+        <td>antiperovskite</td>
+        <td>330.0</td>
+        <td></td>
+        <td></td>
+        <td>65.1</td>
+        <td>Mn</td>
+        <td>1.22</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3RhN</td>
+        <td>105</td>
+        <td>Fe₃RhN</td>
+        <td>antiperovskite</td>
+        <td>505.0</td>
+        <td></td>
+        <td></td>
+        <td>168.9</td>
+        <td>Fe</td>
+        <td>2.64</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrMn2B4</td>
+        <td>106</td>
+        <td>CrMn₂B₄</td>
+        <td>boride</td>
+        <td>440.0</td>
+        <td></td>
+        <td></td>
+        <td>90.9</td>
+        <td>Mn</td>
+        <td>1.75</td>
+
+      </tr>
+      
+      <tr>
+        <td>MoMn2B4</td>
+        <td>107</td>
+        <td>MoMn₂B₄</td>
+        <td>boride</td>
+        <td>590.0</td>
+        <td></td>
+        <td></td>
+        <td>78.7</td>
+        <td>Mn</td>
+        <td>1.83</td>
+
+      </tr>
+      
+      <tr>
+        <td>WMn2B4</td>
+        <td>108</td>
+        <td>WMn₂B₄</td>
+        <td>boride</td>
+        <td>560.0</td>
+        <td></td>
+        <td></td>
+        <td>58.4</td>
+        <td>Mn</td>
+        <td>1.83</td>
+
+      </tr>
+      
+      <tr>
+        <td>TaMn2B4</td>
+        <td>109</td>
+        <td>TaMn₂B₄</td>
+        <td>boride</td>
+        <td>780.0</td>
+        <td></td>
+        <td></td>
+        <td>66.7</td>
+        <td>Mn</td>
+        <td>2.05</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrNiAs</td>
+        <td>110</td>
+        <td>CrNiAs</td>
+        <td>Fe2P</td>
+        <td>182.0</td>
+        <td></td>
+        <td></td>
+        <td>90.0</td>
+        <td>Cr</td>
+        <td>2.96</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrNiP</td>
+        <td>111</td>
+        <td>CrNiP</td>
+        <td>Ni2In-TiNiSi</td>
+        <td>140.0</td>
+        <td></td>
+        <td></td>
+        <td>104.3</td>
+        <td>Cr</td>
+        <td>2.48</td>
+
+      </tr>
+      
+      <tr>
+        <td>FeCoP</td>
+        <td>112</td>
+        <td>FeCoP</td>
+        <td>Ni2In-TiNiSi</td>
+        <td>425.0</td>
+        <td></td>
+        <td></td>
+        <td>78.0</td>
+        <td>Fe</td>
+        <td>1.78</td>
+
+      </tr>
+      
+      <tr>
+        <td>FeNiP</td>
+        <td>113</td>
+        <td>FeNiP</td>
+        <td>Fe2P</td>
+        <td>95.0</td>
+        <td></td>
+        <td></td>
+        <td>45.6</td>
+        <td>Fe</td>
+        <td>1.38</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCoAs</td>
+        <td>114</td>
+        <td>MnCoAs</td>
+        <td>Ni2In-TiNiSi</td>
+        <td>350.0</td>
+        <td></td>
+        <td></td>
+        <td>91.7</td>
+        <td>Mn</td>
+        <td>3.04</td>
+
+      </tr>
+      
+      <tr>
+        <td>FeCoAs</td>
+        <td>115</td>
+        <td>FeCoAs</td>
+        <td>Fe2P</td>
+        <td>300.0</td>
+        <td></td>
+        <td></td>
+        <td>64.5</td>
+        <td>Fe</td>
+        <td>2.13</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCoSb</td>
+        <td>116</td>
+        <td>MnCoSb</td>
+        <td>half heusler</td>
+        <td>478.0</td>
+        <td></td>
+        <td></td>
+        <td>70.9</td>
+        <td>Mn</td>
+        <td>3.19</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnPtSb</td>
+        <td>117</td>
+        <td>MnPtSb</td>
+        <td>half heusler</td>
+        <td>572.0</td>
+        <td></td>
+        <td></td>
+        <td>58.2</td>
+        <td>Mn</td>
+        <td>3.64</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnPtSn</td>
+        <td>118</td>
+        <td>MnPtSn</td>
+        <td>half heusler</td>
+        <td>330.0</td>
+        <td></td>
+        <td></td>
+        <td>55.5</td>
+        <td>Mn</td>
+        <td>3.75</td>
+
+      </tr>
+      
+      <tr>
+        <td>VCoSb</td>
+        <td>119</td>
+        <td>VCoSb</td>
+        <td>half heusler</td>
+        <td>58.0</td>
+        <td></td>
+        <td></td>
+        <td>24.1</td>
+        <td>V</td>
+        <td>1.17</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnPdSb</td>
+        <td>120</td>
+        <td>MnPdSb</td>
+        <td>half heusler</td>
+        <td>500.0</td>
+        <td></td>
+        <td></td>
+        <td>66.3</td>
+        <td>Mn</td>
+        <td>3.24</td>
+
+      </tr>
+      
+      <tr>
+        <td>TiCoSn</td>
+        <td>121</td>
+        <td>TiCoSn</td>
+        <td>half heusler</td>
+        <td>134.0</td>
+        <td></td>
+        <td></td>
+        <td>9.2</td>
+        <td>Co</td>
+        <td>0.6</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnPtGa</td>
+        <td>122</td>
+        <td>MnPtGa</td>
+        <td>Ni2In-TiNiSi</td>
+        <td>220.0</td>
+        <td></td>
+        <td></td>
+        <td>65.5</td>
+        <td>Mn</td>
+        <td>3.66</td>
+
+      </tr>
+      
+      <tr>
+        <td>BaFeO3</td>
+        <td>123</td>
+        <td>BaFeO₃</td>
+        <td>oxide</td>
+        <td>110.0</td>
+        <td></td>
+        <td></td>
+        <td>83.8</td>
+        <td>Fe</td>
+        <td>2.99</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe2Zr</td>
+        <td>124</td>
+        <td>Fe₂Zr</td>
+        <td>laves</td>
+        <td>600.0</td>
+        <td></td>
+        <td></td>
+        <td>84.3</td>
+        <td>Fe</td>
+        <td>1.97</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe5C2</td>
+        <td>125</td>
+        <td>Fe₅C₂</td>
+        <td>close packed</td>
+        <td>519.0</td>
+        <td></td>
+        <td></td>
+        <td>153.2</td>
+        <td>Fe</td>
+        <td>2.13</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe7C3</td>
+        <td>126</td>
+        <td>Fe₇C₃</td>
+        <td>close packed</td>
+        <td>523.0</td>
+        <td></td>
+        <td></td>
+        <td>151.3</td>
+        <td>Fe</td>
+        <td>2.02</td>
+
+      </tr>
+      
+      <tr>
+        <td>Co3Sn2S2</td>
+        <td>127</td>
+        <td>Co₃Sn₂S₂</td>
+        <td>other</td>
+        <td>177.0</td>
+        <td></td>
+        <td></td>
+        <td>11.6</td>
+        <td>Co</td>
+        <td>0.39</td>
+
+      </tr>
+      
+      <tr>
+        <td>Ni3Al</td>
+        <td>128</td>
+        <td>Ni₃Al</td>
+        <td>close packed</td>
+        <td>42.0</td>
+        <td></td>
+        <td></td>
+        <td>22.2</td>
+        <td>Ni</td>
+        <td>0.33</td>
+
+      </tr>
+      
+      <tr>
+        <td>ZrZn2</td>
+        <td>129</td>
+        <td>ZrZn₂</td>
+        <td>laves</td>
+        <td>17.0</td>
+        <td></td>
+        <td></td>
+        <td>22.1</td>
+        <td>Zr</td>
+        <td>0.52</td>
+
+      </tr>
+      
+      <tr>
+        <td>Au4V</td>
+        <td>130</td>
+        <td>Au₄V</td>
+        <td>other</td>
+        <td>44.0</td>
+        <td></td>
+        <td></td>
+        <td>12.7</td>
+        <td>V</td>
+        <td>1.81</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrBe12</td>
+        <td>131</td>
+        <td>CrBe₁₂</td>
+        <td>other</td>
+        <td>50.0</td>
+        <td></td>
+        <td></td>
+        <td>47.4</td>
+        <td>Cr</td>
+        <td>1.68</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCo2Si</td>
+        <td>132</td>
+        <td>MnCo₂Si</td>
+        <td>heusler</td>
+        <td>985.0</td>
+        <td></td>
+        <td></td>
+        <td>138.9</td>
+        <td>Mn</td>
+        <td>3.0</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCo2Sn</td>
+        <td>133</td>
+        <td>MnCo₂Sn</td>
+        <td>heusler</td>
+        <td>829.0</td>
+        <td></td>
+        <td></td>
+        <td>96.5</td>
+        <td>Mn</td>
+        <td>3.21</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCo2Ga</td>
+        <td>134</td>
+        <td>MnCo₂Ga</td>
+        <td>heusler</td>
+        <td>694.0</td>
+        <td></td>
+        <td></td>
+        <td>94.3</td>
+        <td>Mn</td>
+        <td>2.76</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCo2Ge</td>
+        <td>135</td>
+        <td>MnCo₂Ge</td>
+        <td>heusler</td>
+        <td>905.0</td>
+        <td></td>
+        <td></td>
+        <td>113.7</td>
+        <td>Mn</td>
+        <td>3.06</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCu2Al</td>
+        <td>136</td>
+        <td>MnCu₂Al</td>
+        <td>heusler</td>
+        <td>600.0</td>
+        <td></td>
+        <td></td>
+        <td>94.9</td>
+        <td>Mn</td>
+        <td>3.45</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCu2In</td>
+        <td>137</td>
+        <td>MnCu₂In</td>
+        <td>heusler</td>
+        <td>520.0</td>
+        <td></td>
+        <td></td>
+        <td>69.9</td>
+        <td>Mn</td>
+        <td>3.63</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCu2Sn</td>
+        <td>138</td>
+        <td>MnCu₂Sn</td>
+        <td>heusler</td>
+        <td>530.0</td>
+        <td></td>
+        <td></td>
+        <td>72.9</td>
+        <td>Mn</td>
+        <td>3.7</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnNi2Ga</td>
+        <td>139</td>
+        <td>MnNi₂Ga</td>
+        <td>heusler</td>
+        <td>379.0</td>
+        <td></td>
+        <td></td>
+        <td>93.7</td>
+        <td>Mn</td>
+        <td>3.38</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnNi2In</td>
+        <td>140</td>
+        <td>MnNi₂In</td>
+        <td>heusler</td>
+        <td>323.0</td>
+        <td></td>
+        <td></td>
+        <td>81.3</td>
+        <td>Mn</td>
+        <td>3.5</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnNi2Sb</td>
+        <td>141</td>
+        <td>MnNi₂Sb</td>
+        <td>heusler</td>
+        <td>360.0</td>
+        <td></td>
+        <td></td>
+        <td>75.6</td>
+        <td>Mn</td>
+        <td>3.58</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnPd2Sn</td>
+        <td>142</td>
+        <td>MnPd₂Sn</td>
+        <td>heusler</td>
+        <td>189.0</td>
+        <td></td>
+        <td></td>
+        <td>60.1</td>
+        <td>Mn</td>
+        <td>3.92</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnPd2Sb</td>
+        <td>143</td>
+        <td>MnPd₂Sb</td>
+        <td>heusler</td>
+        <td>247.0</td>
+        <td></td>
+        <td></td>
+        <td>62.0</td>
+        <td>Mn</td>
+        <td>3.99</td>
+
+      </tr>
+      
+      <tr>
+        <td>TiCo2Sn</td>
+        <td>144</td>
+        <td>TiCo₂Sn</td>
+        <td>heusler</td>
+        <td>371.0</td>
+        <td></td>
+        <td></td>
+        <td>39.4</td>
+        <td>Co</td>
+        <td>1.06</td>
+
+      </tr>
+      
+      <tr>
+        <td>TiCo2Ge</td>
+        <td>145</td>
+        <td>TiCo₂Ge</td>
+        <td>heusler</td>
+        <td>384.0</td>
+        <td></td>
+        <td></td>
+        <td>47.2</td>
+        <td>Co</td>
+        <td>1.03</td>
+
+      </tr>
+      
+      <tr>
+        <td>FeCo2Si</td>
+        <td>146</td>
+        <td>FeCo₂Si</td>
+        <td>heusler</td>
+        <td>1015.0</td>
+        <td></td>
+        <td></td>
+        <td>148.9</td>
+        <td>Fe</td>
+        <td>2.78</td>
+
+      </tr>
+      
+      <tr>
+        <td>FeCo2Ge</td>
+        <td>147</td>
+        <td>FeCo₂Ge</td>
+        <td>heusler</td>
+        <td>980.0</td>
+        <td></td>
+        <td></td>
+        <td>126.1</td>
+        <td>Fe</td>
+        <td>2.86</td>
+
+      </tr>
+      
+      <tr>
+        <td>TiCo2Al</td>
+        <td>148</td>
+        <td>TiCo₂Al</td>
+        <td>heusler</td>
+        <td>120.0</td>
+        <td></td>
+        <td></td>
+        <td>28.8</td>
+        <td>Co</td>
+        <td>0.6</td>
+
+      </tr>
+      
+      <tr>
+        <td>VCo2Ga</td>
+        <td>149</td>
+        <td>VCo₂Ga</td>
+        <td>heusler</td>
+        <td>358.0</td>
+        <td></td>
+        <td></td>
+        <td>46.8</td>
+        <td>Co</td>
+        <td>0.93</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3Si</td>
+        <td>150</td>
+        <td>Fe₃Si</td>
+        <td>heusler</td>
+        <td>600.0</td>
+        <td></td>
+        <td></td>
+        <td>146.0</td>
+        <td>Fe</td>
+        <td>2.56</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3Ge</td>
+        <td>151</td>
+        <td>Fe₃Ge</td>
+        <td>heusler</td>
+        <td>740.0</td>
+        <td></td>
+        <td></td>
+        <td>125.2</td>
+        <td>Fe</td>
+        <td>2.59</td>
+
+      </tr>
+      
+      <tr>
+        <td>VCo2Sn</td>
+        <td>152</td>
+        <td>VCo₂Sn</td>
+        <td>heusler</td>
+        <td>95.0</td>
+        <td></td>
+        <td></td>
+        <td>57.3</td>
+        <td>Co</td>
+        <td>1.05</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrCo2Ga</td>
+        <td>153</td>
+        <td>CrCo₂Ga</td>
+        <td>heusler</td>
+        <td>495.0</td>
+        <td></td>
+        <td></td>
+        <td>70.5</td>
+        <td>Cr</td>
+        <td>1.61</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrCo2Al</td>
+        <td>154</td>
+        <td>CrCo₂Al</td>
+        <td>heusler</td>
+        <td>334.0</td>
+        <td></td>
+        <td></td>
+        <td>85.2</td>
+        <td>Cr</td>
+        <td>1.55</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnCo2Al</td>
+        <td>155</td>
+        <td>MnCo₂Al</td>
+        <td>heusler</td>
+        <td>697.0</td>
+        <td></td>
+        <td></td>
+        <td>112.6</td>
+        <td>Mn</td>
+        <td>2.7</td>
+
+      </tr>
+      
+      <tr>
+        <td>VMn2Al</td>
+        <td>156</td>
+        <td>VMn₂Al</td>
+        <td>heusler</td>
+        <td>760.0</td>
+        <td></td>
+        <td></td>
+        <td>59.5</td>
+        <td>Mn</td>
+        <td>1.42</td>
+
+      </tr>
+      
+      <tr>
+        <td>ZrCo2Sn</td>
+        <td>157</td>
+        <td>ZrCo₂Sn</td>
+        <td>heusler</td>
+        <td>448.0</td>
+        <td></td>
+        <td></td>
+        <td>34.1</td>
+        <td>Co</td>
+        <td>1.08</td>
+
+      </tr>
+      
+      <tr>
+        <td>HfCo2Sn</td>
+        <td>158</td>
+        <td>HfCo₂Sn</td>
+        <td>heusler</td>
+        <td>394.0</td>
+        <td></td>
+        <td></td>
+        <td>26.9</td>
+        <td>Co</td>
+        <td>1.06</td>
+
+      </tr>
+      
+      <tr>
+        <td>NbCo2Sn</td>
+        <td>159</td>
+        <td>NbCo₂Sn</td>
+        <td>heusler</td>
+        <td>105.0</td>
+        <td></td>
+        <td></td>
+        <td>29.0</td>
+        <td>Co</td>
+        <td>0.85</td>
+
+      </tr>
+      
+      <tr>
+        <td>CrFe2Al</td>
+        <td>160</td>
+        <td>CrFe₂Al</td>
+        <td>heusler</td>
+        <td>210.0</td>
+        <td></td>
+        <td></td>
+        <td>5.0</td>
+        <td>Cr</td>
+        <td>0.23</td>
+
+      </tr>
+      
+      <tr>
+        <td>Fe3Al</td>
+        <td>161</td>
+        <td>Fe₃Al</td>
+        <td>heusler</td>
+        <td>400.0</td>
+        <td></td>
+        <td></td>
+        <td>169.9</td>
+        <td>Fe</td>
+        <td>2.4</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnGeP2</td>
+        <td>162</td>
+        <td>MnGeP₂</td>
+        <td>chalcopyrite</td>
+        <td>320.0</td>
+        <td></td>
+        <td></td>
+        <td>98.9</td>
+        <td>Mn</td>
+        <td>3.15</td>
+
+      </tr>
+      
+      <tr>
+        <td>MnGeAs2</td>
+        <td>163</td>
+        <td>MnGeAs₂</td>
+        <td>chalcopyrite</td>
+        <td>340.0</td>
+        <td></td>
+        <td></td>
+        <td>83.6</td>
+        <td>Mn</td>
+        <td>3.76</td>
+
+      </tr>
+      
+      <tr>
+        <td>HgCr2S4</td>
+        <td>164</td>
+        <td>HgCr₂S₄</td>
+        <td>spinel</td>
+        <td>36.0</td>
+        <td></td>
+        <td></td>
+        <td>77.3</td>
+        <td>Cr</td>
+        <td>2.93</td>
+
+      </tr>
+      
+      <tr>
+        <td>HgCr2Se4</td>
+        <td>165</td>
+        <td>HgCr₂Se₄</td>
+        <td>spinel</td>
+        <td>106.0</td>
+        <td></td>
+        <td></td>
+        <td>53.9</td>
+        <td>Cr</td>
+        <td>3.01</td>
+
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- to make into an interactive datatable-->
+
+<script>
+$(document).ready(function() {
+    var table = $('#datatable').DataTable( {
+        "pageLength": 50,
+        "columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": true,
+            }
+        ]
+    } );
+
+    $('#datatable tbody').on('click', 'tr', function() {
+      var data = table.row(this).data();
+      //window.location.href = '/c/' + data[1]
+      var url = '../c/' + encodeURIComponent(data[1]) + '/'
+      $('<a href="'+ url + '" target="_blank"></a>')[0].click();
+    } );
+} );
+
+</script>
+
+
+
+</body>
+</html>
